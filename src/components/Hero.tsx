@@ -1,0 +1,237 @@
+"use client";
+import { useEffect, useState } from "react";
+import { HeroVisual } from "./HeroVisual";
+import { CalendlyButton } from "./CalendlyButton";
+
+const badges = ["Social Media", "Websites", "AI Automation", "Web3 Communities"];
+
+const inlineStats = [
+  { value: "20+", label: "clients" },
+  { value: "3+", label: "years" },
+  { value: "Web3", label: "native" },
+];
+
+function reveal(mounted: boolean, delay: number, direction: "up" | "right" = "up") {
+  const initial = direction === "right" ? "translateX(28px)" : "translateY(20px)";
+  return {
+    opacity: mounted ? 1 : 0,
+    transform: mounted ? "translate(0,0)" : initial,
+    transition: `opacity 0.7s ease ${delay}ms, transform 0.8s cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
+  };
+}
+
+export function Hero() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setMounted(true), 80);
+    return () => clearTimeout(t);
+  }, []);
+
+  return (
+    <section
+      id="home"
+      style={{
+        position: "relative",
+        minHeight: "100svh",
+        display: "flex",
+        alignItems: "center",
+        paddingTop: 100,
+        paddingBottom: 80,
+        overflow: "hidden",
+        backgroundImage: "linear-gradient(rgba(6,182,212,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(6,182,212,0.07) 1px, transparent 1px)",
+        backgroundSize: "60px 60px",
+      }}
+    >
+      {/* Radial fade — darkens grid toward centre so headline stays readable */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background: "radial-gradient(ellipse 80% 70% at 50% 50%, transparent 10%, #050a14 75%)",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
+
+      <div
+        className="section-inner"
+        style={{
+          width: "100%",
+          padding: "0 24px",
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: 60,
+          alignItems: "center",
+          position: "relative",
+          zIndex: 1,
+        }}
+      >
+        {/* Left: Copy */}
+        <div>
+          {/* Badge row */}
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 28, ...reveal(mounted, 0) }}>
+            {badges.map((b) => (
+              <span
+                key={b}
+                style={{
+                  fontFamily: "var(--font-dm)",
+                  fontSize: 11,
+                  fontWeight: 500,
+                  padding: "5px 12px",
+                  borderRadius: 100,
+                  background: "rgba(6,182,212,0.08)",
+                  border: "1px solid rgba(6,182,212,0.2)",
+                  color: "#67e8f9",
+                  letterSpacing: "0.05em",
+                }}
+              >
+                {b}
+              </span>
+            ))}
+          </div>
+
+          {/* Headline */}
+          <h1
+            style={{
+              fontFamily: "var(--font-syne)",
+              fontSize: "clamp(44px, 5.5vw, 72px)",
+              fontWeight: 800,
+              lineHeight: 1.05,
+              letterSpacing: "-0.04em",
+              color: "#f8fafc",
+              marginBottom: 24,
+              ...reveal(mounted, 100),
+            }}
+          >
+            Smarter media.{" "}
+            <span className="gradient-text">Smoother growth.</span>
+          </h1>
+
+          {/* Subheadline */}
+          <p
+            style={{
+              fontFamily: "var(--font-dm)",
+              fontSize: 17,
+              lineHeight: 1.75,
+              color: "#94a3b8",
+              maxWidth: 480,
+              marginBottom: 28,
+              ...reveal(mounted, 200),
+            }}
+          >
+            Flowstate Media helps businesses create better content, launch
+            conversion-focused websites, and automate repetitive work with
+            AI-powered systems.
+          </p>
+
+          {/* Inline stats strip */}
+          <div
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 0,
+              marginBottom: 32,
+              borderRadius: 100,
+              border: "1px solid rgba(6,182,212,0.15)",
+              background: "rgba(6,182,212,0.04)",
+              overflow: "hidden",
+              ...reveal(mounted, 260),
+            }}
+          >
+            {inlineStats.map((s, i) => (
+              <div
+                key={s.label}
+                style={{
+                  padding: "8px 20px",
+                  borderRight: i < inlineStats.length - 1 ? "1px solid rgba(255,255,255,0.06)" : "none",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 6,
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: "var(--font-syne)",
+                    fontSize: 14,
+                    fontWeight: 800,
+                    background: "linear-gradient(135deg,#06b6d4,#818cf8)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                  }}
+                >
+                  {s.value}
+                </span>
+                <span
+                  style={{
+                    fontFamily: "var(--font-dm)",
+                    fontSize: 12,
+                    color: "#6b7d99",
+                    fontWeight: 500,
+                  }}
+                >
+                  {s.label}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* CTAs */}
+          <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 28, ...reveal(mounted, 320) }}>
+            <CalendlyButton className="btn-primary" style={{ padding: "14px 28px", fontSize: 15 }}>
+              Book a Call
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </CalendlyButton>
+            <a href="#services" className="btn-secondary" style={{ padding: "14px 28px", fontSize: 15 }}>
+              Explore Services
+            </a>
+          </div>
+
+          {/* Trust badge */}
+          <div
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 8,
+              padding: "8px 16px",
+              borderRadius: 100,
+              background: "rgba(129,140,248,0.08)",
+              border: "1px solid rgba(129,140,248,0.2)",
+              ...reveal(mounted, 420),
+            }}
+          >
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#818cf8" strokeWidth="2" strokeLinecap="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+            <span style={{ fontFamily: "var(--font-dm)", fontSize: 12, color: "#a5b4fc", fontWeight: 500 }}>
+              3+ years Web3 community experience
+            </span>
+          </div>
+        </div>
+
+        {/* Right: Hero Visual */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            ...reveal(mounted, 250, "right"),
+          }}
+        >
+          <HeroVisual />
+        </div>
+      </div>
+
+      <style>{`
+        @media (max-width: 900px) {
+          #home > div { grid-template-columns: 1fr !important; text-align: center; }
+          #home > div > div:last-child { display: none; }
+          #home > div > div:first-child > div:nth-child(2) { font-size: 42px !important; }
+          #home > div > div:first-child > div:nth-child(1) { justify-content: center; }
+          #home > div > div:first-child > div:nth-child(4) { justify-content: center; }
+        }
+      `}</style>
+    </section>
+  );
+}
