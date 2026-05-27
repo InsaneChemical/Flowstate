@@ -19,8 +19,8 @@ export default function Home() {
         <StatsBar />
         <ProblemSection />
         <PhotoDivider />
-        <LogoTicker />
         <ServicesSection />
+        <LogoTicker />
 <TestimonialsSection />
         <NextSteps />
         <FinalCTA />
