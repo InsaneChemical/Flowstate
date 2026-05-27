@@ -133,36 +133,6 @@ export function ServicesSection() {
                   </p>
                 </div>
 
-                {/* Arrow — min 44×44 touch target */}
-                <a
-                  href="#contact"
-                  aria-label={`Enquire about ${s.title}`}
-                  style={{
-                    color: "#4a5f78",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    flexShrink: 0,
-                    width: 44,
-                    height: 44,
-                    borderRadius: "50%",
-                    transition: "color 0.2s, background 0.2s",
-                    textDecoration: "none",
-                  }}
-                  onMouseEnter={(e) => {
-                    (e.currentTarget as HTMLAnchorElement).style.color = s.color;
-                    (e.currentTarget as HTMLAnchorElement).style.background = `rgba(${s.color === "#06b6d4" ? "6,182,212" : "129,140,248"},0.08)`;
-                  }}
-                  onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLAnchorElement).style.color = "#4a5f78";
-                    (e.currentTarget as HTMLAnchorElement).style.background = "transparent";
-                  }}
-                >
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                    <line x1="5" y1="12" x2="19" y2="12" />
-                    <polyline points="12 5 19 12 12 19" />
-                  </svg>
-                </a>
               </div>
             </RevealWrapper>
           ))}

@@ -287,8 +287,8 @@ export function HeroVisual() {
           <div
             className="glass"
             style={{
-              width: 152,
-              padding: "14px 16px",
+              width: 172,
+              padding: "16px 18px",
               borderRadius: 16,
               border: `1px solid rgba(${card.color === "#06b6d4" ? "6,182,212" : "129,140,248"},0.2)`,
               background: `rgba(${card.color === "#06b6d4" ? "6,182,212" : "129,140,248"},0.04)`,
@@ -297,11 +297,11 @@ export function HeroVisual() {
             }}
           >
             {/* Icon + label row */}
-            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
               <div
                 style={{
-                  width: 34,
-                  height: 34,
+                  width: 36,
+                  height: 36,
                   borderRadius: 10,
                   background: `rgba(${card.color === "#06b6d4" ? "6,182,212" : "129,140,248"},0.12)`,
                   border: `1px solid rgba(${card.color === "#06b6d4" ? "6,182,212" : "129,140,248"},0.25)`,
@@ -316,11 +316,11 @@ export function HeroVisual() {
               <span
                 style={{
                   fontFamily: "var(--font-syne)",
-                  fontSize: 11,
+                  fontSize: 13,
                   fontWeight: 700,
                   color: "#e2e8f0",
-                  letterSpacing: "0.01em",
-                  lineHeight: 1.25,
+                  letterSpacing: "-0.01em",
+                  lineHeight: 1.2,
                 }}
               >
                 {card.label}
@@ -331,11 +331,11 @@ export function HeroVisual() {
             <p
               style={{
                 fontFamily: "var(--font-dm)",
-                fontSize: 9.5,
-                color: "#475569",
-                letterSpacing: "0.04em",
-                lineHeight: 1.4,
-                marginBottom: 8,
+                fontSize: 11,
+                color: "#64748b",
+                letterSpacing: "0.02em",
+                lineHeight: 1.5,
+                marginBottom: 10,
               }}
             >
               {card.tagline}
@@ -346,8 +346,8 @@ export function HeroVisual() {
               style={{
                 display: "inline-flex",
                 alignItems: "center",
-                gap: 4,
-                padding: "3px 8px",
+                gap: 5,
+                padding: "4px 10px",
                 borderRadius: 100,
                 background: `rgba(${card.color === "#06b6d4" ? "6,182,212" : "129,140,248"},0.1)`,
                 border: `1px solid rgba(${card.color === "#06b6d4" ? "6,182,212" : "129,140,248"},0.2)`,
@@ -360,15 +360,16 @@ export function HeroVisual() {
                   borderRadius: "50%",
                   background: card.color,
                   boxShadow: `0 0 4px ${card.color}`,
+                  flexShrink: 0,
                 }}
               />
               <span
                 style={{
                   fontFamily: "var(--font-dm)",
-                  fontSize: 9,
+                  fontSize: 10.5,
                   fontWeight: 600,
                   color: card.color,
-                  letterSpacing: "0.04em",
+                  letterSpacing: "0.02em",
                 }}
               >
                 {card.metric}

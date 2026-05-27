@@ -91,3 +91,24 @@ a, button, [role="button"] { cursor: pointer; }
     scroll-behavior: auto !important;
   }
 }
+
+/* ─── Mobile responsive ─── */
+@media (max-width: 768px) {
+  .section-pad { padding: 64px 20px; }
+  .section-inner { padding: 0; }
+}
+@media (max-width: 480px) {
+  .section-pad { padding: 52px 16px; }
+}
+
+/* ─── Mobile hero text ─── */
+@media (max-width: 900px) {
+  #home h1 { font-size: clamp(36px, 8vw, 52px) !important; }
+  #home p { font-size: 15px !important; }
+}
+
+/* ─── Services section — mobile readable body text ─── */
+@media (max-width: 600px) {
+  #services h3 { font-size: 16px !important; }
+  #services p  { font-size: 14px !important; line-height: 1.7 !important; }
+}
