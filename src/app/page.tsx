@@ -21,9 +21,9 @@ export default function Home() {
         <PhotoDivider />
         <ServicesSection />
         <LogoTicker />
-<TestimonialsSection />
         <NextSteps />
         <FinalCTA />
+        <TestimonialsSection />
       </main>
       <Footer />
     </>
