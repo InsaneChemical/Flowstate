@@ -16,10 +16,10 @@ export default function Home() {
       <Navbar />
       <main id="main-content">
         <Hero />
-        <LogoTicker />
         <StatsBar />
         <ProblemSection />
         <PhotoDivider />
+        <LogoTicker />
         <ServicesSection />
 <TestimonialsSection />
         <NextSteps />
