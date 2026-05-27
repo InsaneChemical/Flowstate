@@ -26,7 +26,7 @@ const trustPoints = [
   },
   {
     title: "Web3 community specialists",
-    text: "3+ years managing fast-moving crypto and Web3 communities across Telegram and Discord.",
+    text: "4+ years managing fast-moving crypto and Web3 communities across Telegram and Discord.",
   },
   {
     title: "Consistent delivery",

@@ -7,7 +7,7 @@ const badges = ["Social Media", "Websites", "AI Automation", "Web3 Communities"]
 
 const inlineStats = [
   { value: "20+", label: "clients" },
-  { value: "3+", label: "years" },
+  { value: "4+", label: "years" },
   { value: "Web3", label: "native" },
 ];
 
@@ -206,7 +206,7 @@ export function Hero() {
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
             </svg>
             <span style={{ fontFamily: "var(--font-dm)", fontSize: 12, color: "#a5b4fc", fontWeight: 500 }}>
-              3+ years Web3 community experience
+              4+ years Web3 community experience
             </span>
           </div>
         </div>

@@ -4,7 +4,7 @@ import { RevealWrapper } from "./ui/RevealWrapper";
 
 const stats = [
   { value: "20+", label: "Clients Served" },
-  { value: "3+", label: "Years Experience" },
+  { value: "4+", label: "Years Experience" },
   { value: "Web3", label: "Community Native" },
   { value: "100%", label: "Growth Focused" },
 ];

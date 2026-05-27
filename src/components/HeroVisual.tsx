@@ -26,8 +26,8 @@ const cards = [
     metric: "↑ 2.4× CVR",
     color: "#06b6d4",
     // position: left
-    style: { top: "34%", left: "0%", transform: "translate(0, -50%)" },
-    cx: 88, cy: 222,
+    style: { top: "40%", left: "0%", transform: "translate(0, -50%)" },
+    cx: 88, cy: 238,
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" strokeWidth="1.5" strokeLinecap="round">
         <rect x="2" y="3" width="20" height="14" rx="2" />
@@ -43,8 +43,8 @@ const cards = [
     metric: "12h/wk saved",
     color: "#818cf8",
     // position: right
-    style: { top: "34%", right: "0%", transform: "translate(0, -50%)" },
-    cx: 412, cy: 222,
+    style: { top: "40%", right: "0%", transform: "translate(0, -50%)" },
+    cx: 412, cy: 238,
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#818cf8" strokeWidth="1.5" strokeLinecap="round">
         <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
@@ -332,7 +332,7 @@ export function HeroVisual() {
               style={{
                 fontFamily: "var(--font-dm)",
                 fontSize: 11,
-                color: "#64748b",
+                color: "#94a3b8",
                 letterSpacing: "0.02em",
                 lineHeight: 1.5,
                 marginBottom: 10,

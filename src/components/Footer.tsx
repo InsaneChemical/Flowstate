@@ -60,12 +60,14 @@ export function Footer() {
               Smarter media. Smoother growth. We build connected digital systems
               that turn attention into revenue.
             </p>
-            {/* Instagram icon */}
-            <div style={{ display: "flex", gap: 12 }}>
+            {/* Social icons */}
+            <div style={{ display: "flex", gap: 10 }}>
+              {/* Instagram */}
               <a
                 href="https://www.instagram.com/flowstate.builds?igsh=MTFic3VubzNpczNubA=="
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Flowstate Media on Instagram"
                 style={{
                   width: 36,
                   height: 36,
@@ -87,19 +89,42 @@ export function Footer() {
                   (e.currentTarget as HTMLAnchorElement).style.color = "#475569";
                 }}
               >
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.75"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="2" y="2" width="20" height="20" rx="5" />
                   <circle cx="12" cy="12" r="4" />
                   <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
+                </svg>
+              </a>
+              {/* X / Twitter */}
+              <a
+                href="https://x.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Flowstate Media on X (Twitter)"
+                style={{
+                  width: 36,
+                  height: 36,
+                  borderRadius: 10,
+                  background: "rgba(255,255,255,0.04)",
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  color: "#475569",
+                  transition: "all 0.25s",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(6,182,212,0.3)";
+                  (e.currentTarget as HTMLAnchorElement).style.color = "#06b6d4";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.08)";
+                  (e.currentTarget as HTMLAnchorElement).style.color = "#475569";
+                }}
+              >
+                {/* X logo */}
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                 </svg>
               </a>
             </div>
