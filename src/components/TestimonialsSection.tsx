@@ -1,349 +1,453 @@
 "use client";
-import * as React from "react";
+
+import { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import type { PanInfo } from "motion/react";
-import { SectionHeader } from "./ui/SectionHeader";
+import { Star } from "lucide-react";
 
 const testimonials = [
   {
-    quote:
-      "We were burning 3 hours a day on content repurposing alone. Flowstate wired up an n8n pipeline that handles everything — formatting, scheduling, cross-channel distribution. We got that time back in the first week and haven't looked back.",
+    id: 1,
     name: "Marcus Chen",
     role: "Co-Founder",
     company: "Nexus Digital",
+    content:
+      "We were burning 3 hours a day on content repurposing alone. Flowstate wired up an n8n pipeline that handles everything — formatting, scheduling, cross-channel distribution. We got that time back in the first week and haven't looked back.",
+    rating: 5,
     avatar: "https://i.pravatar.cc/150?img=11",
     variant: "cyan" as const,
   },
   {
-    quote:
-      "They rebuilt our site and took over our LinkedIn in the same month. Six weeks later we closed our first enterprise inbound — a £38k contract. That one deal paid for a full year of their service. The ROI conversation ended there.",
+    id: 2,
     name: "Priya Sharma",
     role: "Head of Growth",
     company: "LaunchPad HQ",
+    content:
+      "They rebuilt our site and took over our LinkedIn in the same month. Six weeks later we closed our first enterprise inbound — a £38k contract. That one deal paid for a full year of their service. The ROI conversation ended there.",
+    rating: 5,
     avatar: "https://i.pravatar.cc/150?img=44",
     variant: "purple" as const,
   },
   {
-    quote:
-      "Our Telegram had 800 members and zero real engagement. Flowstate came in, restructured the whole community, and built a moderation system that actually scales. 90 days later we're at 3,400 members and the group runs itself.",
+    id: 3,
     name: "Ryan Kowalski",
     role: "Community Lead",
     company: "Arc Protocol",
+    content:
+      "Our Telegram had 800 members and zero real engagement. Flowstate came in, restructured the whole community, and built a moderation system that actually scales. 90 days later we're at 3,400 members and the group runs itself.",
+    rating: 5,
     avatar: "https://i.pravatar.cc/150?img=15",
     variant: "cyan" as const,
   },
 ];
 
-const len = testimonials.length;
-
 export function TestimonialsSection() {
-  const [currentIndex, setCurrentIndex] = React.useState(0);
-  const [exitX, setExitX] = React.useState(0);
-  const [navigating, setNavigating] = React.useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  const navigate = (dir: 1 | -1) => {
-    if (navigating) return;
-    setNavigating(true);
-    setExitX(dir === 1 ? -440 : 440);
-    setTimeout(() => {
-      setCurrentIndex((prev) => (prev + dir + len) % len);
-      setExitX(0);
-      setNavigating(false);
-    }, 220);
-  };
+  /* Auto-rotate every 6 s */
+  useEffect(() => {
+    const t = setInterval(
+      () => setActiveIndex((i) => (i + 1) % testimonials.length),
+      6000,
+    );
+    return () => clearInterval(t);
+  }, []);
 
-  const handleDragEnd = (
-    _e: MouseEvent | TouchEvent | PointerEvent,
-    info: PanInfo,
-  ) => {
-    if (Math.abs(info.offset.x) > 80) {
-      navigate(info.offset.x < 0 ? 1 : -1);
-    }
-  };
+  const active = testimonials[activeIndex];
+  const accent = active.variant === "cyan" ? "#06b6d4" : "#818cf8";
+  const borderColor =
+    active.variant === "cyan"
+      ? "rgba(6,182,212,0.2)"
+      : "rgba(129,140,248,0.2)";
 
   return (
-    <section className="section-pad" id="testimonials">
-      <div className="section-inner">
-        <SectionHeader
-          label="Results"
-          title="What clients say."
-          subtitle="Real outcomes from real businesses that chose to build their digital growth system with us."
-        />
-
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            paddingTop: 32,
-            paddingBottom: 8,
-          }}
+    <section
+      id="testimonials"
+      className="section-pad"
+      style={{
+        borderTop: "1px solid rgba(6,182,212,0.06)",
+        background:
+          "linear-gradient(180deg, rgba(129,140,248,0.03) 0%, transparent 100%)",
+      }}
+    >
+      <div
+        className="section-inner testimonials-grid"
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: 80,
+          alignItems: "center",
+        }}
+      >
+        {/* ── Left: heading + nav ─────────────────────────────── */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          style={{ display: "flex", flexDirection: "column", gap: 24 }}
         >
-          {/* ── Card stack ─────────────────────────────────────── */}
+          {/* Label */}
           <div
-            className="testimonial-stack"
-            style={{ position: "relative", width: 520, height: 272 }}
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 6,
+              padding: "5px 14px",
+              borderRadius: 100,
+              background: "rgba(6,182,212,0.08)",
+              border: "1px solid rgba(6,182,212,0.2)",
+              width: "fit-content",
+            }}
           >
-            {testimonials.map((t, index) => {
-              const isFront = index === currentIndex;
-              const isMid = index === (currentIndex + 1) % len;
-              const isBack = index === (currentIndex + 2) % len;
-              if (!isFront && !isMid && !isBack) return null;
-
-              const isCyan = t.variant === "cyan";
-              const accent = isCyan ? "#06b6d4" : "#818cf8";
-              const accent2 = isCyan ? "#818cf8" : "#06b6d4";
-              const borderColor = isCyan
-                ? "rgba(6,182,212,0.22)"
-                : "rgba(129,140,248,0.22)";
-              const glowColor = isCyan
-                ? "rgba(6,182,212,0.07)"
-                : "rgba(129,140,248,0.07)";
-
-              return (
-                <motion.div
-                  key={t.name}
-                  style={{
-                    position: "absolute",
-                    inset: 0,
-                    borderRadius: 18,
-                    background:
-                      "linear-gradient(145deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.015) 100%)",
-                    border: `1px solid ${borderColor}`,
-                    backdropFilter: "blur(16px)",
-                    WebkitBackdropFilter: "blur(16px)",
-                    boxShadow: isFront
-                      ? `0 16px 40px rgba(0,0,0,0.4), 0 0 0 1px ${borderColor}, inset 0 1px 0 rgba(255,255,255,0.06)`
-                      : "0 6px 20px rgba(0,0,0,0.22)",
-                    zIndex: isFront ? 3 : isMid ? 2 : 1,
-                    padding: "26px 30px 22px",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: 14,
-                    cursor: isFront ? "grab" : "default",
-                    userSelect: "none",
-                    overflow: "hidden",
-                  }}
-                  drag={isFront ? "x" : false}
-                  dragConstraints={{ left: 0, right: 0 }}
-                  dragElastic={0.65}
-                  onDragEnd={isFront ? handleDragEnd : undefined}
-                  initial={{ scale: 0.95, opacity: 0 }}
-                  animate={{
-                    scale: isFront ? 1 : isMid ? 0.96 : 0.92,
-                    opacity: isFront ? 1 : isMid ? 0.55 : 0.25,
-                    x: isFront ? exitX : 0,
-                    y: isFront ? 0 : isMid ? 10 : 20,
-                    rotate: isFront ? exitX / 22 : isMid ? -1.5 : -3,
-                  }}
-                  transition={{ type: "spring", stiffness: 320, damping: 22 }}
-                  whileDrag={{ cursor: "grabbing", scale: 1.02 }}
-                >
-                  {/* Corner glow */}
-                  <div
-                    aria-hidden="true"
-                    style={{
-                      position: "absolute",
-                      top: -40,
-                      right: -40,
-                      width: 140,
-                      height: 140,
-                      borderRadius: "50%",
-                      background: glowColor,
-                      filter: "blur(36px)",
-                      pointerEvents: "none",
-                    }}
-                  />
-
-                  {/* Quote mark */}
-                  <div
-                    style={{
-                      fontFamily: "Georgia, serif",
-                      fontSize: 44,
-                      lineHeight: 0.75,
-                      background: `linear-gradient(135deg, ${accent}, ${accent2})`,
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      opacity: 0.7,
-                    }}
-                  >
-                    &ldquo;
-                  </div>
-
-                  {/* Quote */}
-                  <p
-                    style={{
-                      fontFamily: "var(--font-dm)",
-                      fontSize: 13.5,
-                      lineHeight: 1.8,
-                      color: "#94a3b8",
-                      fontStyle: "italic",
-                      flex: 1,
-                      margin: 0,
-                    }}
-                  >
-                    {t.quote}
-                  </p>
-
-                  {/* Author */}
-                  <div style={{ display: "flex", alignItems: "center", gap: 11 }}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={t.avatar}
-                      alt={t.name}
-                      width={36}
-                      height={36}
-                      style={{
-                        width: 36,
-                        height: 36,
-                        borderRadius: "50%",
-                        objectFit: "cover",
-                        flexShrink: 0,
-                        border: `2px solid ${borderColor}`,
-                      }}
-                    />
-                    <div>
-                      <div
-                        style={{
-                          fontFamily: "var(--font-syne)",
-                          fontSize: 13,
-                          fontWeight: 600,
-                          color: "#f1f5f9",
-                          letterSpacing: "-0.01em",
-                        }}
-                      >
-                        {t.name}
-                      </div>
-                      <div
-                        style={{
-                          fontFamily: "var(--font-dm)",
-                          fontSize: 11,
-                          color: "#64748b",
-                          marginTop: 1,
-                        }}
-                      >
-                        {t.role} · {t.company}
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })}
+            <Star
+              size={12}
+              style={{ fill: "#06b6d4", color: "#06b6d4" }}
+            />
+            <span
+              style={{
+                fontFamily: "var(--font-dm)",
+                fontSize: 11,
+                fontWeight: 600,
+                letterSpacing: "0.1em",
+                textTransform: "uppercase",
+                color: "#67e8f9",
+              }}
+            >
+              Client Results
+            </span>
           </div>
 
-          {/* ── Navigation ─────────────────────────────────────── */}
+          {/* Title */}
+          <h2
+            style={{
+              fontFamily: "var(--font-syne)",
+              fontSize: "clamp(32px, 3.5vw, 52px)",
+              fontWeight: 800,
+              lineHeight: 1.08,
+              letterSpacing: "-0.03em",
+              color: "#f8fafc",
+              margin: 0,
+            }}
+          >
+            What clients{" "}
+            <span className="gradient-text">actually say.</span>
+          </h2>
+
+          {/* Subtitle */}
+          <p
+            style={{
+              fontFamily: "var(--font-dm)",
+              fontSize: 16,
+              lineHeight: 1.75,
+              color: "#64748b",
+              maxWidth: 420,
+              margin: 0,
+            }}
+          >
+            Real outcomes from real businesses. No cherry-picked screenshots
+            — just the results we&apos;re most proud of.
+          </p>
+
+          {/* Dot nav */}
+          <div style={{ display: "flex", gap: 8, alignItems: "center", paddingTop: 8 }}>
+            {testimonials.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveIndex(i)}
+                aria-label={`View testimonial ${i + 1}`}
+                style={{
+                  height: 8,
+                  width: i === activeIndex ? 28 : 8,
+                  borderRadius: 4,
+                  background:
+                    i === activeIndex
+                      ? "linear-gradient(90deg,#06b6d4,#818cf8)"
+                      : "rgba(255,255,255,0.12)",
+                  border: "none",
+                  cursor: "pointer",
+                  padding: 0,
+                  transition: "width 0.35s cubic-bezier(0.16,1,0.3,1), background 0.35s",
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Who's speaking */}
           <div
             style={{
               display: "flex",
               alignItems: "center",
               gap: 16,
-              marginTop: 28,
+              paddingTop: 8,
+              borderTop: "1px solid rgba(255,255,255,0.05)",
+              marginTop: 4,
             }}
           >
-            <button
-              onClick={() => navigate(-1)}
-              disabled={navigating}
-              aria-label="Previous testimonial"
-              style={{
-                width: 36,
-                height: 36,
-                borderRadius: "50%",
-                background: "rgba(255,255,255,0.04)",
-                border: "1px solid rgba(255,255,255,0.09)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                cursor: "pointer",
-                transition: "border-color 0.2s, color 0.2s",
-                color: "#475569",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(6,182,212,0.4)";
-                (e.currentTarget as HTMLButtonElement).style.color = "#06b6d4";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.09)";
-                (e.currentTarget as HTMLButtonElement).style.color = "#475569";
-              }}
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="15 18 9 12 15 6" />
-              </svg>
-            </button>
-
-            <div style={{ display: "flex", gap: 7, alignItems: "center" }}>
-              {testimonials.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrentIndex(i)}
-                  aria-label={`Go to testimonial ${i + 1}`}
+            {testimonials.map((t, i) => (
+              <button
+                key={t.id}
+                onClick={() => setActiveIndex(i)}
+                aria-label={`Select ${t.name}`}
+                style={{
+                  background: "none",
+                  border: "none",
+                  padding: 0,
+                  cursor: "pointer",
+                  opacity: i === activeIndex ? 1 : 0.3,
+                  transition: "opacity 0.3s",
+                  transform: i === activeIndex ? "scale(1.1)" : "scale(1)",
+                }}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={t.avatar}
+                  alt={t.name}
+                  width={40}
+                  height={40}
                   style={{
-                    width: i === currentIndex ? 18 : 5,
-                    height: 5,
-                    borderRadius: 3,
-                    background:
-                      i === currentIndex
-                        ? "linear-gradient(90deg,#06b6d4,#818cf8)"
-                        : "rgba(255,255,255,0.14)",
-                    border: "none",
-                    cursor: "pointer",
-                    padding: 0,
-                    transition: "width 0.3s cubic-bezier(0.16,1,0.3,1), background 0.3s",
+                    width: 40,
+                    height: 40,
+                    borderRadius: "50%",
+                    objectFit: "cover",
+                    border: `2px solid ${i === activeIndex ? accent : "rgba(255,255,255,0.1)"}`,
+                    transition: "border-color 0.3s, transform 0.3s",
+                    display: "block",
                   }}
                 />
-              ))}
+              </button>
+            ))}
+            <div style={{ marginLeft: 4 }}>
+              <motion.div
+                key={active.name}
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div
+                  style={{
+                    fontFamily: "var(--font-syne)",
+                    fontSize: 13,
+                    fontWeight: 600,
+                    color: "#f1f5f9",
+                  }}
+                >
+                  {active.name}
+                </div>
+                <div
+                  style={{
+                    fontFamily: "var(--font-dm)",
+                    fontSize: 11,
+                    color: "#64748b",
+                    marginTop: 2,
+                  }}
+                >
+                  {active.role} · {active.company}
+                </div>
+              </motion.div>
             </div>
+          </div>
+        </motion.div>
 
-            <button
-              onClick={() => navigate(1)}
-              disabled={navigating}
-              aria-label="Next testimonial"
+        {/* ── Right: animated card ─────────────────────────────── */}
+        <motion.div
+          initial={{ opacity: 0, x: 32 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          style={{ position: "relative", minHeight: 360 }}
+        >
+          {testimonials.map((t, index) => (
+            <motion.div
+              key={t.id}
+              initial={{ opacity: 0, x: 60 }}
+              animate={{
+                opacity: activeIndex === index ? 1 : 0,
+                x: activeIndex === index ? 0 : 50,
+                scale: activeIndex === index ? 1 : 0.97,
+              }}
+              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               style={{
-                width: 36,
-                height: 36,
-                borderRadius: "50%",
-                background: "rgba(255,255,255,0.04)",
-                border: "1px solid rgba(255,255,255,0.09)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                cursor: "pointer",
-                transition: "border-color 0.2s, color 0.2s",
-                color: "#475569",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(6,182,212,0.4)";
-                (e.currentTarget as HTMLButtonElement).style.color = "#06b6d4";
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.09)";
-                (e.currentTarget as HTMLButtonElement).style.color = "#475569";
+                position: "absolute",
+                inset: 0,
+                zIndex: activeIndex === index ? 10 : 0,
+                pointerEvents: activeIndex === index ? "auto" : "none",
               }}
             >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <polyline points="9 18 15 12 9 6" />
-              </svg>
-            </button>
-          </div>
+              <div
+                style={{
+                  background:
+                    "linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)",
+                  border: `1px solid ${borderColor}`,
+                  borderRadius: 20,
+                  padding: "40px 44px",
+                  backdropFilter: "blur(16px)",
+                  WebkitBackdropFilter: "blur(16px)",
+                  boxShadow: `0 24px 56px rgba(0,0,0,0.45), 0 0 0 1px ${borderColor}, inset 0 1px 0 rgba(255,255,255,0.06)`,
+                  height: "100%",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 0,
+                  position: "relative",
+                  overflow: "hidden",
+                }}
+              >
+                {/* Accent glow */}
+                <div
+                  aria-hidden="true"
+                  style={{
+                    position: "absolute",
+                    top: -60,
+                    right: -60,
+                    width: 200,
+                    height: 200,
+                    borderRadius: "50%",
+                    background:
+                      t.variant === "cyan"
+                        ? "rgba(6,182,212,0.07)"
+                        : "rgba(129,140,248,0.07)",
+                    filter: "blur(48px)",
+                    pointerEvents: "none",
+                  }}
+                />
 
-          <p
+                {/* Stars */}
+                <div style={{ display: "flex", gap: 4, marginBottom: 24 }}>
+                  {Array.from({ length: t.rating }).map((_, i) => (
+                    <Star
+                      key={i}
+                      size={16}
+                      style={{ fill: "#eab308", color: "#eab308" }}
+                    />
+                  ))}
+                </div>
+
+                {/* Quote */}
+                <div style={{ position: "relative", flex: 1, marginBottom: 28 }}>
+                  {/* Large decorative quote */}
+                  <span
+                    aria-hidden="true"
+                    style={{
+                      position: "absolute",
+                      top: -10,
+                      left: -8,
+                      fontFamily: "Georgia, serif",
+                      fontSize: 80,
+                      lineHeight: 1,
+                      color: accent,
+                      opacity: 0.15,
+                      userSelect: "none",
+                    }}
+                  >
+                    &ldquo;
+                  </span>
+                  <p
+                    style={{
+                      fontFamily: "var(--font-dm)",
+                      fontSize: 17,
+                      lineHeight: 1.8,
+                      color: "#cbd5e1",
+                      margin: 0,
+                      paddingLeft: 4,
+                      position: "relative",
+                      zIndex: 1,
+                    }}
+                  >
+                    {t.content}
+                  </p>
+                </div>
+
+                {/* Divider */}
+                <div
+                  style={{
+                    height: 1,
+                    background: "rgba(255,255,255,0.06)",
+                    marginBottom: 24,
+                  }}
+                />
+
+                {/* Author row */}
+                <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={t.avatar}
+                    alt={t.name}
+                    width={48}
+                    height={48}
+                    style={{
+                      width: 48,
+                      height: 48,
+                      borderRadius: "50%",
+                      objectFit: "cover",
+                      border: `2px solid ${borderColor}`,
+                      flexShrink: 0,
+                    }}
+                  />
+                  <div>
+                    <div
+                      style={{
+                        fontFamily: "var(--font-syne)",
+                        fontSize: 15,
+                        fontWeight: 700,
+                        color: "#f8fafc",
+                        letterSpacing: "-0.01em",
+                      }}
+                    >
+                      {t.name}
+                    </div>
+                    <div
+                      style={{
+                        fontFamily: "var(--font-dm)",
+                        fontSize: 12.5,
+                        color: "#64748b",
+                        marginTop: 2,
+                      }}
+                    >
+                      {t.role} · {t.company}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+
+          {/* Decorative corner squares */}
+          <div
+            aria-hidden="true"
             style={{
-              fontFamily: "var(--font-dm)",
-              fontSize: 10.5,
-              color: "#2d3e52",
-              marginTop: 12,
-              letterSpacing: "0.06em",
-              textTransform: "uppercase",
+              position: "absolute",
+              bottom: -16,
+              left: -16,
+              width: 64,
+              height: 64,
+              borderRadius: 12,
+              background: "rgba(6,182,212,0.05)",
+              border: "1px solid rgba(6,182,212,0.1)",
+              zIndex: 0,
             }}
-          >
-            swipe or drag to browse
-          </p>
-        </div>
+          />
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              top: -16,
+              right: -16,
+              width: 64,
+              height: 64,
+              borderRadius: 12,
+              background: "rgba(129,140,248,0.05)",
+              border: "1px solid rgba(129,140,248,0.1)",
+              zIndex: 0,
+            }}
+          />
+        </motion.div>
       </div>
 
       <style>{`
-        @media (max-width: 600px) {
-          .testimonial-stack { width: calc(100vw - 56px) !important; height: 320px !important; }
+        @media (max-width: 900px) {
+          .testimonials-grid {
+            grid-template-columns: 1fr !important;
+            gap: 48px !important;
+          }
         }
       `}</style>
     </section>
