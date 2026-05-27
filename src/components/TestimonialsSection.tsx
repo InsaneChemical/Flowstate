@@ -7,29 +7,29 @@ import { SectionHeader } from "./ui/SectionHeader";
 const testimonials = [
   {
     quote:
-      "Flowstate rebuilt our entire content system in 3 weeks. Our lead flow has been consistent ever since — we're getting qualified enquiries every single week now.",
-    name: "Alex M.",
-    role: "Founder",
-    company: "TechStart",
-    initials: "AM",
+      "We were burning 3 hours a day on content repurposing alone. Flowstate wired up an n8n pipeline that handles everything — formatting, scheduling, cross-channel distribution. We got that time back in the first week and haven't looked back.",
+    name: "Marcus Chen",
+    role: "Co-Founder",
+    company: "Nexus Digital",
+    avatar: "https://i.pravatar.cc/150?img=11",
     variant: "cyan" as const,
   },
   {
     quote:
-      "The AI automation setup alone saved us 12 hours a week. We scaled from 200 to 1,400 email subscribers in 60 days. The ROI was immediate.",
-    name: "Jordan K.",
-    role: "Director",
-    company: "GrowthLab",
-    initials: "JK",
+      "They rebuilt our site and took over our LinkedIn in the same month. Six weeks later we closed our first enterprise inbound — a £38k contract. That one deal paid for a full year of their service. The ROI conversation ended there.",
+    name: "Priya Sharma",
+    role: "Head of Growth",
+    company: "LaunchPad HQ",
+    avatar: "https://i.pravatar.cc/150?img=44",
     variant: "purple" as const,
   },
   {
     quote:
-      "Their Web3 community management is best-in-class. Our Telegram went from chaotic to converting. They understand the space and they deliver.",
-    name: "Sam T.",
-    role: "CMO",
-    company: "ChainVentures",
-    initials: "ST",
+      "Our Telegram had 800 members and zero real engagement. Flowstate came in, restructured the whole community, and built a moderation system that actually scales. 90 days later we're at 3,400 members and the group runs itself.",
+    name: "Ryan Kowalski",
+    role: "Community Lead",
+    company: "Arc Protocol",
+    avatar: "https://i.pravatar.cc/150?img=15",
     variant: "cyan" as const,
   },
 ];
@@ -75,13 +75,14 @@ export function TestimonialsSection() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            padding: "48px 0 24px",
+            paddingTop: 32,
+            paddingBottom: 8,
           }}
         >
           {/* ── Card stack ─────────────────────────────────────── */}
           <div
             className="testimonial-stack"
-            style={{ position: "relative", width: 520, height: 300 }}
+            style={{ position: "relative", width: 520, height: 272 }}
           >
             {testimonials.map((t, index) => {
               const isFront = index === currentIndex;
@@ -96,8 +97,8 @@ export function TestimonialsSection() {
                 ? "rgba(6,182,212,0.22)"
                 : "rgba(129,140,248,0.22)";
               const glowColor = isCyan
-                ? "rgba(6,182,212,0.08)"
-                : "rgba(129,140,248,0.08)";
+                ? "rgba(6,182,212,0.07)"
+                : "rgba(129,140,248,0.07)";
 
               return (
                 <motion.div
@@ -105,19 +106,20 @@ export function TestimonialsSection() {
                   style={{
                     position: "absolute",
                     inset: 0,
-                    borderRadius: 20,
-                    background: `linear-gradient(145deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.015) 100%)`,
+                    borderRadius: 18,
+                    background:
+                      "linear-gradient(145deg, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0.015) 100%)",
                     border: `1px solid ${borderColor}`,
                     backdropFilter: "blur(16px)",
                     WebkitBackdropFilter: "blur(16px)",
                     boxShadow: isFront
-                      ? `0 20px 48px rgba(0,0,0,0.45), 0 0 0 1px ${borderColor}, inset 0 1px 0 rgba(255,255,255,0.06)`
-                      : `0 8px 24px rgba(0,0,0,0.25)`,
+                      ? `0 16px 40px rgba(0,0,0,0.4), 0 0 0 1px ${borderColor}, inset 0 1px 0 rgba(255,255,255,0.06)`
+                      : "0 6px 20px rgba(0,0,0,0.22)",
                     zIndex: isFront ? 3 : isMid ? 2 : 1,
-                    padding: "36px 40px 32px",
+                    padding: "26px 30px 22px",
                     display: "flex",
                     flexDirection: "column",
-                    gap: 18,
+                    gap: 14,
                     cursor: isFront ? "grab" : "default",
                     userSelect: "none",
                     overflow: "hidden",
@@ -137,18 +139,18 @@ export function TestimonialsSection() {
                   transition={{ type: "spring", stiffness: 320, damping: 22 }}
                   whileDrag={{ cursor: "grabbing", scale: 1.02 }}
                 >
-                  {/* Subtle accent glow in corner */}
+                  {/* Corner glow */}
                   <div
                     aria-hidden="true"
                     style={{
                       position: "absolute",
                       top: -40,
                       right: -40,
-                      width: 160,
-                      height: 160,
+                      width: 140,
+                      height: 140,
                       borderRadius: "50%",
                       background: glowColor,
-                      filter: "blur(40px)",
+                      filter: "blur(36px)",
                       pointerEvents: "none",
                     }}
                   />
@@ -157,12 +159,12 @@ export function TestimonialsSection() {
                   <div
                     style={{
                       fontFamily: "Georgia, serif",
-                      fontSize: 56,
+                      fontSize: 44,
                       lineHeight: 0.75,
                       background: `linear-gradient(135deg, ${accent}, ${accent2})`,
                       WebkitBackgroundClip: "text",
                       WebkitTextFillColor: "transparent",
-                      opacity: 0.75,
+                      opacity: 0.7,
                     }}
                   >
                     &ldquo;
@@ -172,8 +174,8 @@ export function TestimonialsSection() {
                   <p
                     style={{
                       fontFamily: "var(--font-dm)",
-                      fontSize: 14.5,
-                      lineHeight: 1.85,
+                      fontSize: 13.5,
+                      lineHeight: 1.8,
                       color: "#94a3b8",
                       fontStyle: "italic",
                       flex: 1,
@@ -184,31 +186,22 @@ export function TestimonialsSection() {
                   </p>
 
                   {/* Author */}
-                  <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                    <div
+                  <div style={{ display: "flex", alignItems: "center", gap: 11 }}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={t.avatar}
+                      alt={t.name}
+                      width={36}
+                      height={36}
                       style={{
-                        width: 38,
-                        height: 38,
+                        width: 36,
+                        height: 36,
                         borderRadius: "50%",
-                        background: `linear-gradient(135deg, ${accent}, ${accent2})`,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
+                        objectFit: "cover",
                         flexShrink: 0,
+                        border: `2px solid ${borderColor}`,
                       }}
-                    >
-                      <span
-                        style={{
-                          fontFamily: "var(--font-syne)",
-                          fontSize: 11,
-                          fontWeight: 700,
-                          color: "white",
-                          letterSpacing: "0.06em",
-                        }}
-                      >
-                        {t.initials}
-                      </span>
-                    </div>
+                    />
                     <div>
                       <div
                         style={{
@@ -224,7 +217,7 @@ export function TestimonialsSection() {
                       <div
                         style={{
                           fontFamily: "var(--font-dm)",
-                          fontSize: 11.5,
+                          fontSize: 11,
                           color: "#64748b",
                           marginTop: 1,
                         }}
@@ -243,101 +236,91 @@ export function TestimonialsSection() {
             style={{
               display: "flex",
               alignItems: "center",
-              gap: 20,
-              marginTop: 36,
+              gap: 16,
+              marginTop: 28,
             }}
           >
-            {/* Prev */}
             <button
               onClick={() => navigate(-1)}
               disabled={navigating}
               aria-label="Previous testimonial"
               style={{
-                width: 40,
-                height: 40,
+                width: 36,
+                height: 36,
                 borderRadius: "50%",
                 background: "rgba(255,255,255,0.04)",
-                border: "1px solid rgba(255,255,255,0.1)",
+                border: "1px solid rgba(255,255,255,0.09)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 cursor: "pointer",
-                transition: "border-color 0.2s, background 0.2s",
-                color: "#64748b",
+                transition: "border-color 0.2s, color 0.2s",
+                color: "#475569",
               }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.borderColor =
-                  "rgba(6,182,212,0.4)";
+                (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(6,182,212,0.4)";
                 (e.currentTarget as HTMLButtonElement).style.color = "#06b6d4";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.borderColor =
-                  "rgba(255,255,255,0.1)";
-                (e.currentTarget as HTMLButtonElement).style.color = "#64748b";
+                (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.09)";
+                (e.currentTarget as HTMLButtonElement).style.color = "#475569";
               }}
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="15 18 9 12 15 6" />
               </svg>
             </button>
 
-            {/* Dots */}
-            <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
+            <div style={{ display: "flex", gap: 7, alignItems: "center" }}>
               {testimonials.map((_, i) => (
                 <button
                   key={i}
-                  onClick={() => {
-                    const dir = (i - currentIndex + len) % len <= len / 2 ? 1 : -1;
-                    setCurrentIndex(i);
-                  }}
-                  aria-label={`Testimonial ${i + 1}`}
+                  onClick={() => setCurrentIndex(i)}
+                  aria-label={`Go to testimonial ${i + 1}`}
                   style={{
-                    width: i === currentIndex ? 20 : 6,
-                    height: 6,
+                    width: i === currentIndex ? 18 : 5,
+                    height: 5,
                     borderRadius: 3,
                     background:
                       i === currentIndex
                         ? "linear-gradient(90deg,#06b6d4,#818cf8)"
-                        : "rgba(255,255,255,0.15)",
+                        : "rgba(255,255,255,0.14)",
                     border: "none",
                     cursor: "pointer",
                     padding: 0,
-                    transition: "width 0.3s, background 0.3s",
+                    transition: "width 0.3s cubic-bezier(0.16,1,0.3,1), background 0.3s",
                   }}
                 />
               ))}
             </div>
 
-            {/* Next */}
             <button
               onClick={() => navigate(1)}
               disabled={navigating}
               aria-label="Next testimonial"
               style={{
-                width: 40,
-                height: 40,
+                width: 36,
+                height: 36,
                 borderRadius: "50%",
                 background: "rgba(255,255,255,0.04)",
-                border: "1px solid rgba(255,255,255,0.1)",
+                border: "1px solid rgba(255,255,255,0.09)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 cursor: "pointer",
-                transition: "border-color 0.2s, background 0.2s",
-                color: "#64748b",
+                transition: "border-color 0.2s, color 0.2s",
+                color: "#475569",
               }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.borderColor =
-                  "rgba(6,182,212,0.4)";
+                (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(6,182,212,0.4)";
                 (e.currentTarget as HTMLButtonElement).style.color = "#06b6d4";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.borderColor =
-                  "rgba(255,255,255,0.1)";
-                (e.currentTarget as HTMLButtonElement).style.color = "#64748b";
+                (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(255,255,255,0.09)";
+                (e.currentTarget as HTMLButtonElement).style.color = "#475569";
               }}
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <polyline points="9 18 15 12 9 6" />
               </svg>
             </button>
@@ -346,20 +329,21 @@ export function TestimonialsSection() {
           <p
             style={{
               fontFamily: "var(--font-dm)",
-              fontSize: 11,
-              color: "#334155",
-              marginTop: 16,
-              letterSpacing: "0.05em",
+              fontSize: 10.5,
+              color: "#2d3e52",
+              marginTop: 12,
+              letterSpacing: "0.06em",
+              textTransform: "uppercase",
             }}
           >
-            drag to swipe · {currentIndex + 1} / {len}
+            swipe or drag to browse
           </p>
         </div>
       </div>
 
       <style>{`
         @media (max-width: 600px) {
-          .testimonial-stack { width: calc(100vw - 64px) !important; height: 340px !important; }
+          .testimonial-stack { width: calc(100vw - 56px) !important; height: 320px !important; }
         }
       `}</style>
     </section>
