@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
+import { LogoTicker } from "@/components/LogoTicker";
 import { StatsBar } from "@/components/StatsBar";
 import { ProblemSection } from "@/components/ProblemSection";
 import { PhotoDivider } from "@/components/PhotoDivider";
@@ -15,6 +16,7 @@ export default function Home() {
       <Navbar />
       <main id="main-content">
         <Hero />
+        <LogoTicker />
         <StatsBar />
         <ProblemSection />
         <PhotoDivider />
