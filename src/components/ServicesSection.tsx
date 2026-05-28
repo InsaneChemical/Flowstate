@@ -64,7 +64,7 @@ export function ServicesSection() {
   const { ref, visible } = useScrollReveal();
 
   return (
-    <section id="services" className="section-pad">
+    <section id="services" className="section-pad" style={{ paddingBottom: 52 }}>
       <div className="section-inner">
         <SectionHeader
           label="What We Do"

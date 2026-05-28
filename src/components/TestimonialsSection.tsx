@@ -129,8 +129,8 @@ export function TestimonialsSection() {
               margin: 0,
             }}
           >
-            What clients{" "}
-            <span className="gradient-text">actually say.</span>
+            What our{" "}
+            <span className="gradient-text">clients say.</span>
           </h2>
 
           {/* Subtitle */}
