@@ -323,7 +323,7 @@ export function TestimonialsSection() {
                 </div>
 
                 {/* Quote */}
-                <div style={{ position: "relative", marginBottom: 28 }}>
+                <div style={{ position: "relative", marginBottom: 0 }}>
                   {/* Large decorative quote */}
                   <span
                     aria-hidden="true"
@@ -356,6 +356,9 @@ export function TestimonialsSection() {
                     {t.content}
                   </p>
                 </div>
+
+                {/* Flex spacer — absorbs height difference so author always sits at bottom */}
+                <div style={{ flex: 1, minHeight: 8 }} />
 
                 {/* Divider */}
                 <div
