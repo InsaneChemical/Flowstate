@@ -46,7 +46,7 @@ export function NextSteps() {
   const { ref, visible } = useScrollReveal();
 
   return (
-    <section className="section-pad" style={{ paddingBottom: 0 }}>
+    <section className="section-pad" style={{ paddingTop: 60, paddingBottom: 0 }}>
       <div className="section-inner">
         {/* Header */}
         <div style={{ marginBottom: 48 }}>
