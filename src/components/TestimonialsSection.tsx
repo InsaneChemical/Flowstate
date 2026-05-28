@@ -11,7 +11,7 @@ const testimonials = [
     role: "Co-Founder",
     company: "Nexus Digital",
     content:
-      "We were burning 3 hours a day on content repurposing alone. Flowstate wired up an n8n pipeline that handles everything — formatting, scheduling, cross-channel distribution. We got that time back in the first week and haven't looked back.",
+      "Burning 3 hours a day on content repurposing was killing our output. Flowstate built an n8n pipeline that handles everything — formatting, scheduling, distribution. We got that time back in week one and we've never looked back.",
     rating: 5,
     avatar: "https://i.pravatar.cc/150?img=11",
     variant: "cyan" as const,
@@ -22,7 +22,7 @@ const testimonials = [
     role: "Head of Growth",
     company: "LaunchPad HQ",
     content:
-      "They rebuilt our site and took over our LinkedIn in the same month. Six weeks later we closed our first enterprise inbound — a £38k contract. That one deal paid for a full year of their service. The ROI conversation ended there.",
+      "They rebuilt our website and took over LinkedIn in the same month. Six weeks later we closed our first enterprise inbound — a £38k contract. That one deal covered a full year of their service. Easiest ROI we've ever justified.",
     rating: 5,
     avatar: "https://i.pravatar.cc/150?img=44",
     variant: "purple" as const,
@@ -33,7 +33,7 @@ const testimonials = [
     role: "Community Lead",
     company: "Arc Protocol",
     content:
-      "Our Telegram had 800 members and zero real engagement. Flowstate came in, restructured the whole community, and built a moderation system that actually scales. 90 days later we're at 3,400 members and the group runs itself.",
+      "Our Telegram had 800 members and practically zero real engagement. Flowstate came in, restructured the whole community, and built a moderation system that actually scales. Ninety days later we hit 3,400 members and it runs itself.",
     rating: 5,
     avatar: "https://i.pravatar.cc/150?img=15",
     variant: "cyan" as const,
