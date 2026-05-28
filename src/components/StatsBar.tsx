@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { RevealWrapper } from "./ui/RevealWrapper";
 
 type StatDef = {
@@ -11,13 +10,48 @@ type StatDef = {
 };
 
 const stats: StatDef[] = [
-  { target: 20,   suffix: "+", text: "20+",  label: "Clients Served"    },
-  { target: 4,    suffix: "+", text: "4+",   label: "Years Experience"  },
-  { target: null, suffix: "",  text: "Web3", label: "Community Native"  },
-  { target: 100,  suffix: "%", text: "100%", label: "Growth Focused"    },
+  { target: 20,   suffix: "+", text: "20+",  label: "Clients Served"   },
+  { target: 4,    suffix: "+", text: "4+",   label: "Years Experience" },
+  { target: null, suffix: "",  text: "Web3", label: "Community Native" },
+  { target: 100,  suffix: "%", text: "100%", label: "Growth Focused"   },
 ];
 
-/* ─── Single animated number ──────────────────────────────────────────────── */
+/* ─── Count-up hook ────────────────────────────────────────────────────────
+   Uses its own IntersectionObserver with rootMargin so it only fires once
+   the bar has been scrolled at least 120px above the viewport bottom —
+   not on initial page load when the bar might just be at the fold edge.
+─────────────────────────────────────────────────────────────────────────── */
+function useCountUpTrigger() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [triggered, setTriggered] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTriggered(true);
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.25,
+        // Shrink the bottom of the observation window so the element must
+        // be at least ~120 px inside the viewport before counting starts.
+        rootMargin: "0px 0px -120px 0px",
+      }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return { ref, triggered };
+}
+
+/* ─── Single animated number ───────────────────────────────────────────── */
 function AnimatedNumber({
   target,
   suffix,
@@ -31,7 +65,7 @@ function AnimatedNumber({
   triggered: boolean;
   delay?: number;
 }) {
-  const [display, setDisplay] = useState<string>(target !== null ? "0" : text);
+  const [display, setDisplay] = useState<string>("0");
   const hasAnimated = useRef(false);
 
   useEffect(() => {
@@ -39,15 +73,13 @@ function AnimatedNumber({
 
     const run = () => {
       hasAnimated.current = true;
-      // Duration scales with target so 4+ feels snappier than 100%
       const duration = Math.min(1800, target * 55 + 700);
       const startTime = performance.now();
 
       function tick(now: number) {
         const elapsed = now - startTime;
         const t = Math.min(elapsed / duration, 1);
-        // ease-out cubic: fast start, soft landing
-        const eased = 1 - Math.pow(1 - t, 3);
+        const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
         setDisplay(String(Math.round(eased * target!)));
         if (t < 1) requestAnimationFrame(tick);
       }
@@ -66,16 +98,22 @@ function AnimatedNumber({
   return <>{display}{suffix}</>;
 }
 
-/* ─── StatsBar ─────────────────────────────────────────────────────────────── */
+/* ─── StatsBar ─────────────────────────────────────────────────────────── */
 export function StatsBar() {
-  const { ref, visible } = useScrollReveal(0.3);
+  const { ref: revealRef, triggered } = useCountUpTrigger();
+  // RevealWrapper uses the same trigger so the fade-in and count-up sync
+  const [fadeVisible, setFadeVisible] = useState(false);
+
+  useEffect(() => {
+    if (triggered) setFadeVisible(true);
+  }, [triggered]);
 
   return (
     <div style={{ padding: "0 24px 64px" }}>
       <div style={{ maxWidth: 1060, margin: "0 auto" }}>
-        <RevealWrapper visible={visible}>
+        <RevealWrapper visible={fadeVisible}>
           <div
-            ref={ref as React.RefObject<HTMLDivElement>}
+            ref={revealRef}
             className="glass border-glow-cyan"
             style={{
               display: "flex",
@@ -112,8 +150,8 @@ export function StatsBar() {
                     target={stat.target}
                     suffix={stat.suffix}
                     text={stat.text}
-                    triggered={visible}
-                    delay={i * 80} // slight stagger between columns
+                    triggered={triggered}
+                    delay={i * 80}
                   />
                 </div>
                 <div
