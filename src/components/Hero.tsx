@@ -5,11 +5,6 @@ import { CalendlyButton } from "./CalendlyButton";
 
 const badges = ["Social Media", "Websites", "AI Automation", "Web3 Communities"];
 
-const inlineStats = [
-  { value: "20+", label: "clients" },
-  { value: "4+", label: "years" },
-  { value: "Web3", label: "native" },
-];
 
 function reveal(mounted: boolean, delay: number, direction: "up" | "right" = "up") {
   const initial = direction === "right" ? "translateX(28px)" : "translateY(20px)";
@@ -123,57 +118,6 @@ export function Hero() {
             conversion-focused websites, and automate repetitive work with
             AI-powered systems.
           </p>
-
-          {/* Inline stats strip */}
-          <div
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 0,
-              marginBottom: 32,
-              borderRadius: 100,
-              border: "1px solid rgba(6,182,212,0.15)",
-              background: "rgba(6,182,212,0.04)",
-              overflow: "hidden",
-              ...reveal(mounted, 260),
-            }}
-          >
-            {inlineStats.map((s, i) => (
-              <div
-                key={s.label}
-                style={{
-                  padding: "8px 20px",
-                  borderRight: i < inlineStats.length - 1 ? "1px solid rgba(255,255,255,0.06)" : "none",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 6,
-                }}
-              >
-                <span
-                  style={{
-                    fontFamily: "var(--font-syne)",
-                    fontSize: 14,
-                    fontWeight: 800,
-                    background: "linear-gradient(135deg,#06b6d4,#818cf8)",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                  }}
-                >
-                  {s.value}
-                </span>
-                <span
-                  style={{
-                    fontFamily: "var(--font-dm)",
-                    fontSize: 13,
-                    color: "#8899b0",
-                    fontWeight: 500,
-                  }}
-                >
-                  {s.label}
-                </span>
-              </div>
-            ))}
-          </div>
 
           {/* CTAs */}
           <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 28, ...reveal(mounted, 320) }}>
