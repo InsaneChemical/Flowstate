@@ -254,8 +254,10 @@ export function TestimonialsSection() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-          style={{ position: "relative", minHeight: 360 }}
+          style={{ position: "relative" }}
         >
+          {/* CSS grid overlay — all cards in same cell, natural height, no stretching */}
+          <div style={{ display: "grid" }}>
           {testimonials.map((t, index) => (
             <motion.div
               key={t.id}
@@ -267,8 +269,8 @@ export function TestimonialsSection() {
               }}
               transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
               style={{
-                position: "absolute",
-                inset: 0,
+                gridRow: 1,
+                gridColumn: 1,
                 zIndex: activeIndex === index ? 10 : 0,
                 pointerEvents: activeIndex === index ? "auto" : "none",
               }}
@@ -283,7 +285,6 @@ export function TestimonialsSection() {
                   backdropFilter: "blur(16px)",
                   WebkitBackdropFilter: "blur(16px)",
                   boxShadow: `0 24px 56px rgba(0,0,0,0.45), 0 0 0 1px ${borderColor}, inset 0 1px 0 rgba(255,255,255,0.06)`,
-                  height: "100%",
                   display: "flex",
                   flexDirection: "column",
                   gap: 0,
@@ -322,7 +323,7 @@ export function TestimonialsSection() {
                 </div>
 
                 {/* Quote */}
-                <div style={{ position: "relative", flex: 1, marginBottom: 28 }}>
+                <div style={{ position: "relative", marginBottom: 28 }}>
                   {/* Large decorative quote */}
                   <span
                     aria-hidden="true"
@@ -409,6 +410,7 @@ export function TestimonialsSection() {
               </div>
             </motion.div>
           ))}
+          </div>{/* end grid overlay */}
 
           {/* Decorative corner squares */}
           <div

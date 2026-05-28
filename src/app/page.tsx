@@ -17,10 +17,10 @@ export default function Home() {
       <main id="main-content">
         <Hero />
         <StatsBar />
+        <LogoTicker />
         <ProblemSection />
         <PhotoDivider />
         <ServicesSection />
-        <LogoTicker />
         <NextSteps />
         <FinalCTA />
         <TestimonialsSection />
