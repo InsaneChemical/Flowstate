@@ -106,7 +106,7 @@ export function TestimonialsSection() {
             <span
               style={{
                 fontFamily: "var(--font-dm)",
-                fontSize: 11,
+                fontSize: 12,
                 fontWeight: 600,
                 letterSpacing: "0.1em",
                 textTransform: "uppercase",
@@ -139,7 +139,7 @@ export function TestimonialsSection() {
               fontFamily: "var(--font-dm)",
               fontSize: 16,
               lineHeight: 1.75,
-              color: "#64748b",
+              color: "#8899b0",
               maxWidth: 420,
               margin: 0,
             }}
@@ -149,26 +149,39 @@ export function TestimonialsSection() {
           </p>
 
           {/* Dot nav */}
-          <div style={{ display: "flex", gap: 8, alignItems: "center", paddingTop: 8 }}>
+          <div style={{ display: "flex", gap: 4, alignItems: "center", paddingTop: 8 }}>
             {testimonials.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setActiveIndex(i)}
                 aria-label={`View testimonial ${i + 1}`}
                 style={{
-                  height: 8,
-                  width: i === activeIndex ? 28 : 8,
-                  borderRadius: 4,
-                  background:
-                    i === activeIndex
-                      ? "linear-gradient(90deg,#06b6d4,#818cf8)"
-                      : "rgba(255,255,255,0.12)",
+                  /* Invisible padding expands touch target to 44px tall */
+                  padding: "18px 4px",
+                  margin: 0,
+                  background: "none",
                   border: "none",
                   cursor: "pointer",
-                  padding: 0,
-                  transition: "width 0.35s cubic-bezier(0.16,1,0.3,1), background 0.35s",
+                  display: "flex",
+                  alignItems: "center",
+                  WebkitTapHighlightColor: "transparent",
+                  touchAction: "manipulation",
                 }}
-              />
+              >
+                <span
+                  style={{
+                    display: "block",
+                    height: 8,
+                    width: i === activeIndex ? 28 : 8,
+                    borderRadius: 4,
+                    background:
+                      i === activeIndex
+                        ? "linear-gradient(90deg,#06b6d4,#818cf8)"
+                        : "rgba(255,255,255,0.12)",
+                    transition: "width 0.35s cubic-bezier(0.16,1,0.3,1), background 0.35s",
+                  }}
+                />
+              </button>
             ))}
           </div>
 
@@ -191,11 +204,18 @@ export function TestimonialsSection() {
                 style={{
                   background: "none",
                   border: "none",
-                  padding: 0,
+                  padding: 2,
                   cursor: "pointer",
                   opacity: i === activeIndex ? 1 : 0.3,
                   transition: "opacity 0.3s",
                   transform: i === activeIndex ? "scale(1.1)" : "scale(1)",
+                  WebkitTapHighlightColor: "transparent",
+                  touchAction: "manipulation",
+                  minWidth: 44,
+                  minHeight: 44,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}

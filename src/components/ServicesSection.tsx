@@ -123,7 +123,7 @@ export function ServicesSection() {
                   <p
                     style={{
                       fontFamily: "var(--font-dm)",
-                      fontSize: 14,
+                      fontSize: 15,
                       lineHeight: 1.75,
                       color: "#8899b0",
                       margin: 0,

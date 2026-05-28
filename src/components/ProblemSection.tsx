@@ -25,7 +25,7 @@ export function ProblemSection() {
             <p
               style={{
                 fontFamily: "var(--font-dm)",
-                fontSize: 11,
+                fontSize: 12,
                 letterSpacing: "0.3em",
                 textTransform: "uppercase",
                 color: "#06b6d4",
@@ -48,7 +48,7 @@ export function ProblemSection() {
               }}
             >
               Most businesses aren&apos;t short on ideas.{" "}
-              <span style={{ color: "#475569" }}>They&apos;re short on systems.</span>
+              <span style={{ color: "#64748b" }}>They&apos;re short on systems.</span>
             </h2>
 
             <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
@@ -60,9 +60,9 @@ export function ProblemSection() {
                     alignItems: "center",
                     gap: 14,
                     fontFamily: "var(--font-dm)",
-                    fontSize: 15,
+                    fontSize: 16,
                     color: "#8899b0",
-                    lineHeight: 1.5,
+                    lineHeight: 1.6,
                   }}
                 >
                   <div

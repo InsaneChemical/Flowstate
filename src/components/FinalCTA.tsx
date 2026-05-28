@@ -81,7 +81,7 @@ export function FinalCTA() {
           <p
             style={{
               fontFamily: "var(--font-dm)",
-              fontSize: 11,
+              fontSize: 12,
               letterSpacing: "0.3em",
               textTransform: "uppercase",
               color: "#06b6d4",
@@ -323,14 +323,14 @@ export function FinalCTA() {
               <p
                 style={{
                   fontFamily: "var(--font-dm)",
-                  fontSize: 12,
-                  color: "#475569",
+                  fontSize: 13,
+                  color: "#64748b",
                   textAlign: "center",
                 }}
               >
                 Prefer to talk now?{" "}
                 <CalendlyButton
-                  style={{ background: "none", border: "none", padding: 0, color: "#06b6d4", fontSize: 12, fontFamily: "var(--font-dm)", cursor: "pointer", textDecoration: "underline" }}
+                  style={{ background: "none", border: "none", padding: 0, color: "#06b6d4", fontSize: 13, fontFamily: "var(--font-dm)", cursor: "pointer", textDecoration: "underline" }}
                 >
                   Book a call directly
                 </CalendlyButton>
@@ -355,7 +355,7 @@ const labelStyle: React.CSSProperties = {
 
 const labelTextStyle: React.CSSProperties = {
   fontFamily: "var(--font-dm)",
-  fontSize: 13,
+  fontSize: 14,
   fontWeight: 500,
   color: "#b0bfcf",
   letterSpacing: "0.01em",

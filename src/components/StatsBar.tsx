@@ -55,7 +55,7 @@ export function StatsBar() {
                 <div
                   style={{
                     fontFamily: "var(--font-dm)",
-                    fontSize: 12,
+                    fontSize: 13,
                     color: "#8899b0",
                     fontWeight: 500,
                     letterSpacing: "0.04em",

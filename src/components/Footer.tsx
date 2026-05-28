@@ -52,7 +52,7 @@ export function Footer() {
                 fontFamily: "var(--font-dm)",
                 fontSize: 14,
                 lineHeight: 1.8,
-                color: "#475569",
+                color: "#64748b",
                 maxWidth: 300,
                 marginBottom: 24,
               }}
@@ -77,7 +77,7 @@ export function Footer() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  color: "#475569",
+                  color: "#64748b",
                   transition: "all 0.25s",
                 }}
                 onMouseEnter={(e) => {
@@ -86,7 +86,7 @@ export function Footer() {
                 }}
                 onMouseLeave={(e) => {
                   (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.08)";
-                  (e.currentTarget as HTMLAnchorElement).style.color = "#475569";
+                  (e.currentTarget as HTMLAnchorElement).style.color = "#64748b";
                 }}
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
@@ -110,7 +110,7 @@ export function Footer() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  color: "#475569",
+                  color: "#64748b",
                   transition: "all 0.25s",
                 }}
                 onMouseEnter={(e) => {
@@ -119,7 +119,7 @@ export function Footer() {
                 }}
                 onMouseLeave={(e) => {
                   (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.08)";
-                  (e.currentTarget as HTMLAnchorElement).style.color = "#475569";
+                  (e.currentTarget as HTMLAnchorElement).style.color = "#64748b";
                 }}
               >
                 {/* X logo */}
@@ -135,11 +135,11 @@ export function Footer() {
             <h4
               style={{
                 fontFamily: "var(--font-dm)",
-                fontSize: 11,
+                fontSize: 12,
                 fontWeight: 600,
                 letterSpacing: "0.2em",
                 textTransform: "uppercase",
-                color: "#334155",
+                color: "#64748b",
                 marginBottom: 20,
               }}
             >
@@ -153,12 +153,12 @@ export function Footer() {
                     style={{
                       fontFamily: "var(--font-dm)",
                       fontSize: 14,
-                      color: "#475569",
+                      color: "#64748b",
                       textDecoration: "none",
                       transition: "color 0.2s",
                     }}
                     onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#94a3b8")}
-                    onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#475569")}
+                    onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#64748b")}
                   >
                     {s}
                   </a>
@@ -172,11 +172,11 @@ export function Footer() {
             <h4
               style={{
                 fontFamily: "var(--font-dm)",
-                fontSize: 11,
+                fontSize: 12,
                 fontWeight: 600,
                 letterSpacing: "0.2em",
                 textTransform: "uppercase",
-                color: "#334155",
+                color: "#64748b",
                 marginBottom: 20,
               }}
             >
@@ -190,12 +190,12 @@ export function Footer() {
                     style={{
                       fontFamily: "var(--font-dm)",
                       fontSize: 14,
-                      color: "#475569",
+                      color: "#64748b",
                       textDecoration: "none",
                       transition: "color 0.2s",
                     }}
                     onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#94a3b8")}
-                    onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#475569")}
+                    onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#64748b")}
                   >
                     {link.label}
                   </a>
@@ -222,7 +222,7 @@ export function Footer() {
             style={{
               fontFamily: "var(--font-dm)",
               fontSize: 12,
-              color: "#334155",
+              color: "#64748b",
             }}
           >
             © {new Date().getFullYear()} Flowstate Media. All rights reserved.
@@ -235,12 +235,12 @@ export function Footer() {
                 style={{
                   fontFamily: "var(--font-dm)",
                   fontSize: 12,
-                  color: "#334155",
+                  color: "#64748b",
                   textDecoration: "none",
                   transition: "color 0.2s",
                 }}
-                onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#475569")}
-                onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#334155")}
+                onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#94a3b8")}
+                onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#64748b")}
               >
                 {item}
               </a>

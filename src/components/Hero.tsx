@@ -75,7 +75,7 @@ export function Hero() {
                 key={b}
                 style={{
                   fontFamily: "var(--font-dm)",
-                  fontSize: 11,
+                  fontSize: 12,
                   fontWeight: 500,
                   padding: "5px 12px",
                   borderRadius: 100,
@@ -164,8 +164,8 @@ export function Hero() {
                 <span
                   style={{
                     fontFamily: "var(--font-dm)",
-                    fontSize: 12,
-                    color: "#6b7d99",
+                    fontSize: 13,
+                    color: "#8899b0",
                     fontWeight: 500,
                   }}
                 >
@@ -205,7 +205,7 @@ export function Hero() {
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#818cf8" strokeWidth="2" strokeLinecap="round">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
             </svg>
-            <span style={{ fontFamily: "var(--font-dm)", fontSize: 12, color: "#a5b4fc", fontWeight: 500 }}>
+            <span style={{ fontFamily: "var(--font-dm)", fontSize: 13, color: "#a5b4fc", fontWeight: 500 }}>
               4+ years Web3 community experience
             </span>
           </div>
@@ -230,6 +230,11 @@ export function Hero() {
           #home > div > div:first-child > div:nth-child(2) { font-size: 42px !important; }
           #home > div > div:first-child > div:nth-child(1) { justify-content: center; }
           #home > div > div:first-child > div:nth-child(4) { justify-content: center; }
+        }
+        @media (max-width: 600px) {
+          #home { padding-top: 80px !important; padding-bottom: 60px !important; }
+          #home > div { gap: 32px !important; padding: 0 16px !important; }
+          #home p[style] { font-size: 16px !important; }
         }
       `}</style>
     </section>

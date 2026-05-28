@@ -119,11 +119,11 @@ function LogoItem({ name, icon }: { name: string; icon: React.ReactNode }) {
         gap: 9,
         padding: "0 28px",
         flexShrink: 0,
-        color: "#4a5568",
+        color: "#64748b",
         transition: "color 0.25s",
       }}
       onMouseEnter={(e) => ((e.currentTarget as HTMLDivElement).style.color = "#94a3b8")}
-      onMouseLeave={(e) => ((e.currentTarget as HTMLDivElement).style.color = "#4a5568")}
+      onMouseLeave={(e) => ((e.currentTarget as HTMLDivElement).style.color = "#64748b")}
     >
       <span style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>{icon}</span>
       <span
@@ -159,11 +159,11 @@ export function LogoTicker() {
       <p
         style={{
           fontFamily: "var(--font-dm)",
-          fontSize: 10,
+          fontSize: 11,
           fontWeight: 600,
           letterSpacing: "0.25em",
           textTransform: "uppercase",
-          color: "#334155",
+          color: "#64748b",
           textAlign: "center",
           marginBottom: 14,
         }}
