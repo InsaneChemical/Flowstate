@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { Star } from "lucide-react";
 
-/* ── Logo badge — works for both image logos and text fallback ─────────── */
+/* ── Logo badge ─────────────────────────────────────────────────────────── */
 function LogoBadge({
   src,
   name,
@@ -12,6 +12,7 @@ function LogoBadge({
   radius,
   borderColor,
   logoBg = "rgba(255,255,255,0.06)",
+  logoPadding = 5,
 }: {
   src: string | null | undefined;
   name: string;
@@ -19,6 +20,7 @@ function LogoBadge({
   radius: number;
   borderColor: string;
   logoBg?: string;
+  logoPadding?: number;
 }) {
   const initials = name
     .split(" ")
@@ -54,7 +56,7 @@ function LogoBadge({
             width: "100%",
             height: "100%",
             objectFit: "contain",
-            padding: 4,
+            padding: logoPadding,
           }}
           onError={(e) => {
             (e.currentTarget as HTMLImageElement).style.display = "none";
@@ -88,6 +90,8 @@ const testimonials = [
     rating: 5,
     logo: "/clients/statter-network.png",
     logoBg: "#000000",
+    logoPadding: 0,
+    url: "https://statter.io/#/home",
     variant: "cyan" as const,
   },
   {
@@ -97,8 +101,10 @@ const testimonials = [
     content:
       "Flowstate built our website from scratch and delivered exactly what we had envisioned. The site looks professional, works smoothly, and has become a strong landing page for our clients. It not only represents our brand well but also helps convert visitors into real enquiries.",
     rating: 5,
-    logo: null as string | null,
-    logoBg: "rgba(129,140,248,0.12)",
+    logo: "/clients/nature-express.png",
+    logoBg: "#0a1a0e",
+    logoPadding: 6,
+    url: "https://naturexpressmadeira.pt/",
     variant: "purple" as const,
   },
   {
@@ -110,6 +116,8 @@ const testimonials = [
     rating: 5,
     logo: "/clients/eclectic-tree.png",
     logoBg: "#ffffff",
+    logoPadding: 4,
+    url: "https://eclectictree.co.za/",
     variant: "cyan" as const,
   },
 ];
@@ -299,6 +307,7 @@ export function TestimonialsSection() {
                   radius={9}
                   borderColor={i === activeIndex ? accent : "rgba(255,255,255,0.1)"}
                   logoBg={t.logoBg}
+                  logoPadding={t.logoPadding}
                 />
               </button>
             ))}
@@ -464,18 +473,44 @@ export function TestimonialsSection() {
                     radius={10}
                     borderColor={borderColor}
                     logoBg={t.logoBg}
+                    logoPadding={t.logoPadding}
                   />
-                  <div>
-                    <div
-                      style={{
-                        fontFamily: "var(--font-syne)",
-                        fontSize: 15,
-                        fontWeight: 700,
-                        color: "#f8fafc",
-                        letterSpacing: "-0.01em",
-                      }}
-                    >
-                      {t.name}
+                  <div style={{ flex: 1 }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                      <span
+                        style={{
+                          fontFamily: "var(--font-syne)",
+                          fontSize: 15,
+                          fontWeight: 700,
+                          color: "#f8fafc",
+                          letterSpacing: "-0.01em",
+                        }}
+                      >
+                        {t.name}
+                      </span>
+                      {t.url && (
+                        <a
+                          href={t.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`Visit ${t.name} website`}
+                          style={{
+                            display: "inline-flex",
+                            alignItems: "center",
+                            color: "#64748b",
+                            transition: "color 0.2s",
+                            flexShrink: 0,
+                          }}
+                          onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#06b6d4")}
+                          onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#64748b")}
+                        >
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                            <polyline points="15 3 21 3 21 9" />
+                            <line x1="10" y1="14" x2="21" y2="3" />
+                          </svg>
+                        </a>
+                      )}
                     </div>
                     <div
                       style={{
