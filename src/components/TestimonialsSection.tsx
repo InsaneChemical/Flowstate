@@ -11,12 +11,14 @@ function LogoBadge({
   size,
   radius,
   borderColor,
+  logoBg = "rgba(255,255,255,0.06)",
 }: {
   src: string | null | undefined;
   name: string;
   size: number;
   radius: number;
   borderColor: string;
+  logoBg?: string;
 }) {
   const initials = name
     .split(" ")
@@ -32,7 +34,7 @@ function LogoBadge({
         height: size,
         borderRadius: radius,
         border: `2px solid ${borderColor}`,
-        background: "rgba(255,255,255,0.06)",
+        background: logoBg,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -52,10 +54,9 @@ function LogoBadge({
             width: "100%",
             height: "100%",
             objectFit: "contain",
-            padding: 5,
+            padding: 4,
           }}
           onError={(e) => {
-            // Hide broken image, let the initials fallback show
             (e.currentTarget as HTMLImageElement).style.display = "none";
           }}
         />
@@ -86,6 +87,7 @@ const testimonials = [
       "Flowstate managed our Telegram and Discord communities for around a year, and the impact was clear. Community engagement was strong, and they also built us a custom onboarding bot that helped streamline the process for new members. Their spam and scammer filtering systems were highly effective and gave us much better control over the community.",
     rating: 5,
     logo: "/clients/statter-network.png",
+    logoBg: "#000000",
     variant: "cyan" as const,
   },
   {
@@ -96,6 +98,7 @@ const testimonials = [
       "Flowstate built our website from scratch and delivered exactly what we had envisioned. The site looks professional, works smoothly, and has become a strong landing page for our clients. It not only represents our brand well but also helps convert visitors into real enquiries.",
     rating: 5,
     logo: null as string | null,
+    logoBg: "rgba(129,140,248,0.12)",
     variant: "purple" as const,
   },
   {
@@ -106,6 +109,7 @@ const testimonials = [
       "We needed an online storefront to sell our custom, locally sourced crafts, and Flowstate went above and beyond. They assisted with everything from product photos to the full website build, creating a unique storefront that truly reflects our brand and products.",
     rating: 5,
     logo: "/clients/eclectic-tree.png",
+    logoBg: "#ffffff",
     variant: "cyan" as const,
   },
 ];
@@ -294,6 +298,7 @@ export function TestimonialsSection() {
                   size={38}
                   radius={9}
                   borderColor={i === activeIndex ? accent : "rgba(255,255,255,0.1)"}
+                  logoBg={t.logoBg}
                 />
               </button>
             ))}
@@ -458,6 +463,7 @@ export function TestimonialsSection() {
                     size={48}
                     radius={10}
                     borderColor={borderColor}
+                    logoBg={t.logoBg}
                   />
                   <div>
                     <div
