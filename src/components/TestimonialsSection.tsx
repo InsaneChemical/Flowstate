@@ -7,35 +7,32 @@ import { Star } from "lucide-react";
 const testimonials = [
   {
     id: 1,
-    name: "Marcus Chen",
-    role: "Co-Founder",
-    company: "Nexus Digital",
+    name: "Statter Network",
+    role: "Community Management",
     content:
-      "Burning 3 hours a day on content repurposing was killing our output. Flowstate built an n8n pipeline that handles everything — formatting, scheduling, distribution. We got that time back in week one and we've never looked back.",
+      "Flowstate managed our Telegram and Discord communities for around a year, and the impact was clear. Community engagement was strong, and they also built us a custom onboarding bot that helped streamline the process for new members. Their spam and scammer filtering systems were highly effective and gave us much better control over the community.",
     rating: 5,
-    avatar: "https://i.pravatar.cc/150?img=11",
+    avatar: "https://i.pravatar.cc/150?img=53",
     variant: "cyan" as const,
   },
   {
     id: 2,
-    name: "Priya Sharma",
-    role: "Head of Growth",
-    company: "LaunchPad HQ",
+    name: "Nature Express",
+    role: "Website Design",
     content:
-      "They rebuilt our website and took over LinkedIn in the same month. Six weeks later we closed our first enterprise inbound — a £38k contract. That one deal covered a full year of their service. Easiest ROI we've ever justified.",
+      "Flowstate built our website from scratch and delivered exactly what we had envisioned. The site looks professional, works smoothly, and has become a strong landing page for our clients. It not only represents our brand well but also helps convert visitors into real enquiries.",
     rating: 5,
-    avatar: "https://i.pravatar.cc/150?img=44",
+    avatar: "https://i.pravatar.cc/150?img=32",
     variant: "purple" as const,
   },
   {
     id: 3,
-    name: "Ryan Kowalski",
-    role: "Community Lead",
-    company: "Arc Protocol",
+    name: "Eclectic Tree",
+    role: "Website & E-commerce",
     content:
-      "Our Telegram had 800 members and practically zero real engagement. Flowstate came in, restructured the whole community, and built a moderation system that actually scales. Ninety days later we hit 3,400 members and it runs itself.",
+      "We needed an online storefront to sell our custom, locally sourced crafts, and Flowstate went above and beyond. They assisted with everything from product photos to the full website build, creating a unique storefront that truly reflects our brand and products.",
     rating: 5,
-    avatar: "https://i.pravatar.cc/150?img=15",
+    avatar: "https://i.pravatar.cc/150?img=47",
     variant: "cyan" as const,
   },
 ];
@@ -261,7 +258,7 @@ export function TestimonialsSection() {
                     marginTop: 2,
                   }}
                 >
-                  {active.role} · {active.company}
+                  {active.role}
                 </div>
               </motion.div>
             </div>
@@ -426,7 +423,7 @@ export function TestimonialsSection() {
                         marginTop: 2,
                       }}
                     >
-                      {t.role} · {t.company}
+                      {t.role}
                     </div>
                   </div>
                 </div>
