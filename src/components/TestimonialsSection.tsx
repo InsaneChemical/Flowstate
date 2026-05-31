@@ -4,6 +4,79 @@ import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { Star } from "lucide-react";
 
+/* ── Logo badge — works for both image logos and text fallback ─────────── */
+function LogoBadge({
+  src,
+  name,
+  size,
+  radius,
+  borderColor,
+}: {
+  src: string | null | undefined;
+  name: string;
+  size: number;
+  radius: number;
+  borderColor: string;
+}) {
+  const initials = name
+    .split(" ")
+    .map((w) => w[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+
+  return (
+    <div
+      style={{
+        width: size,
+        height: size,
+        borderRadius: radius,
+        border: `2px solid ${borderColor}`,
+        background: "rgba(255,255,255,0.06)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        overflow: "hidden",
+        flexShrink: 0,
+        transition: "border-color 0.3s",
+      }}
+    >
+      {src ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={src}
+          alt={name}
+          width={size}
+          height={size}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "contain",
+            padding: 5,
+          }}
+          onError={(e) => {
+            // Hide broken image, let the initials fallback show
+            (e.currentTarget as HTMLImageElement).style.display = "none";
+          }}
+        />
+      ) : (
+        <span
+          style={{
+            fontFamily: "var(--font-syne)",
+            fontSize: size * 0.3,
+            fontWeight: 700,
+            color: borderColor,
+            letterSpacing: "-0.02em",
+            userSelect: "none",
+          }}
+        >
+          {initials}
+        </span>
+      )}
+    </div>
+  );
+}
+
 const testimonials = [
   {
     id: 1,
@@ -12,7 +85,7 @@ const testimonials = [
     content:
       "Flowstate managed our Telegram and Discord communities for around a year, and the impact was clear. Community engagement was strong, and they also built us a custom onboarding bot that helped streamline the process for new members. Their spam and scammer filtering systems were highly effective and gave us much better control over the community.",
     rating: 5,
-    avatar: "https://i.pravatar.cc/150?img=53",
+    logo: "/clients/statter-network.png",
     variant: "cyan" as const,
   },
   {
@@ -22,7 +95,7 @@ const testimonials = [
     content:
       "Flowstate built our website from scratch and delivered exactly what we had envisioned. The site looks professional, works smoothly, and has become a strong landing page for our clients. It not only represents our brand well but also helps convert visitors into real enquiries.",
     rating: 5,
-    avatar: "https://i.pravatar.cc/150?img=32",
+    logo: null as string | null,
     variant: "purple" as const,
   },
   {
@@ -32,7 +105,7 @@ const testimonials = [
     content:
       "We needed an online storefront to sell our custom, locally sourced crafts, and Flowstate went above and beyond. They assisted with everything from product photos to the full website build, creating a unique storefront that truly reflects our brand and products.",
     rating: 5,
-    avatar: "https://i.pravatar.cc/150?img=47",
+    logo: "/clients/eclectic-tree.png",
     variant: "cyan" as const,
   },
 ];
@@ -187,7 +260,7 @@ export function TestimonialsSection() {
             style={{
               display: "flex",
               alignItems: "center",
-              gap: 16,
+              gap: 12,
               paddingTop: 8,
               borderTop: "1px solid rgba(255,255,255,0.05)",
               marginTop: 4,
@@ -203,9 +276,9 @@ export function TestimonialsSection() {
                   border: "none",
                   padding: 2,
                   cursor: "pointer",
-                  opacity: i === activeIndex ? 1 : 0.3,
-                  transition: "opacity 0.3s",
-                  transform: i === activeIndex ? "scale(1.1)" : "scale(1)",
+                  opacity: i === activeIndex ? 1 : 0.35,
+                  transition: "opacity 0.3s, transform 0.3s",
+                  transform: i === activeIndex ? "scale(1.08)" : "scale(1)",
                   WebkitTapHighlightColor: "transparent",
                   touchAction: "manipulation",
                   minWidth: 44,
@@ -215,21 +288,12 @@ export function TestimonialsSection() {
                   justifyContent: "center",
                 }}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={t.avatar}
-                  alt={t.name}
-                  width={40}
-                  height={40}
-                  style={{
-                    width: 40,
-                    height: 40,
-                    borderRadius: "50%",
-                    objectFit: "cover",
-                    border: `2px solid ${i === activeIndex ? accent : "rgba(255,255,255,0.1)"}`,
-                    transition: "border-color 0.3s, transform 0.3s",
-                    display: "block",
-                  }}
+                <LogoBadge
+                  src={t.logo}
+                  name={t.name}
+                  size={38}
+                  radius={9}
+                  borderColor={i === activeIndex ? accent : "rgba(255,255,255,0.1)"}
                 />
               </button>
             ))}
@@ -388,20 +452,12 @@ export function TestimonialsSection() {
 
                 {/* Author row */}
                 <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={t.avatar}
-                    alt={t.name}
-                    width={48}
-                    height={48}
-                    style={{
-                      width: 48,
-                      height: 48,
-                      borderRadius: "50%",
-                      objectFit: "cover",
-                      border: `2px solid ${borderColor}`,
-                      flexShrink: 0,
-                    }}
+                  <LogoBadge
+                    src={t.logo}
+                    name={t.name}
+                    size={48}
+                    radius={10}
+                    borderColor={borderColor}
                   />
                   <div>
                     <div
