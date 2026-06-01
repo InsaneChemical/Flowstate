@@ -46,10 +46,10 @@ export function NextSteps() {
   const { ref, visible } = useScrollReveal();
 
   return (
-    <section className="section-pad" style={{ paddingTop: 60, paddingBottom: 0 }}>
+    <section className="section-pad next-steps-section" style={{ paddingTop: 60, paddingBottom: 0 }}>
       <div className="section-inner">
         {/* Header */}
-        <div style={{ marginBottom: 48 }}>
+        <div className="next-steps-header" style={{ marginBottom: 48 }}>
           <p style={{
             fontFamily: "var(--font-dm)",
             fontSize: 12,
@@ -167,6 +167,11 @@ export function NextSteps() {
         @media(max-width:768px){
           .next-steps-grid{ grid-template-columns:1fr !important; gap: 40px; }
           .steps-connector{ display:none; }
+        }
+        @media(max-width:600px){
+          .next-steps-section { padding-top: 40px !important; }
+          .next-steps-header  { margin-bottom: 28px !important; }
+          .next-steps-grid    { gap: 28px !important; }
         }
       `}</style>
     </section>

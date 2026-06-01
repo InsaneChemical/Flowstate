@@ -77,7 +77,7 @@ export function FinalCTA() {
 
       <div className="section-inner" style={{ position: "relative" }}>
         {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: 56 }}>
+        <div className="cta-header" style={{ textAlign: "center", marginBottom: 56 }}>
           <p
             style={{
               fontFamily: "var(--font-dm)",
@@ -340,7 +340,11 @@ export function FinalCTA() {
         </div>
       </div>
       <style>{`
-        @media(max-width:600px){ .form-row{grid-template-columns:1fr!important} #contact .glass{padding:32px 24px!important} }
+        @media(max-width:600px){
+          .form-row { grid-template-columns: 1fr !important; }
+          #contact .glass { padding: 28px 20px !important; }
+          .cta-header { margin-bottom: 32px !important; }
+        }
         @keyframes spin { to { transform: rotate(360deg) } }
       `}</style>
     </section>

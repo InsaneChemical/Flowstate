@@ -98,7 +98,7 @@ a, button, [role="button"] { cursor: pointer; }
   .section-inner { padding: 0; }
 }
 @media (max-width: 480px) {
-  .section-pad { padding: 52px 16px; }
+  .section-pad { padding: 44px 16px; }
 }
 
 /* ─── Mobile hero text ─── */

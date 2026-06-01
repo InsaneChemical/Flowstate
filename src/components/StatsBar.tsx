@@ -109,9 +109,10 @@ export function StatsBar() {
   }, [triggered]);
 
   return (
-    <div style={{ padding: "0 24px 64px" }}>
+    <div className="stats-outer" style={{ padding: "0 24px 64px" }}>
       <style>{`
         @media (max-width: 600px) {
+          .stats-outer    { padding: 0 16px 36px !important; }
           .stats-bar-inner { flex-wrap: wrap !important; }
           .stat-cell      { flex: 0 0 50% !important; box-sizing: border-box; padding: 20px 16px !important; }
           .stat-cell-0, .stat-cell-2 { border-right: 1px solid rgba(255,255,255,0.06) !important; }
