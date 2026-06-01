@@ -125,8 +125,9 @@ const testimonials = [
 export function TestimonialsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  /* Auto-rotate every 6 s */
+  /* Auto-rotate every 6 s — disabled when user prefers reduced motion */
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const t = setInterval(
       () => setActiveIndex((i) => (i + 1) % testimonials.length),
       6000,
@@ -371,6 +372,7 @@ export function TestimonialsSection() {
               }}
             >
               <div
+                className="testimonial-card"
                 style={{
                   background:
                     "linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%)",
@@ -566,6 +568,11 @@ export function TestimonialsSection() {
           .testimonials-grid {
             grid-template-columns: 1fr !important;
             gap: 48px !important;
+          }
+        }
+        @media (max-width: 600px) {
+          .testimonial-card {
+            padding: 28px 24px !important;
           }
         }
       `}</style>
