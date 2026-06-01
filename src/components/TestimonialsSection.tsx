@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { Star } from "lucide-react";
 
 /* ── Logo badge ─────────────────────────────────────────────────────────── */
@@ -124,6 +124,7 @@ const testimonials = [
 
 export function TestimonialsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const reduce = useReducedMotion();
 
   /* Auto-rotate every 6 s — disabled when user prefers reduced motion */
   useEffect(() => {
@@ -315,9 +316,9 @@ export function TestimonialsSection() {
             <div style={{ marginLeft: 4 }}>
               <motion.div
                 key={active.name}
-                initial={{ opacity: 0, y: 6 }}
+                initial={{ opacity: 0, y: reduce ? 0 : 6 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: reduce ? 0.1 : 0.3, ease: [0.16, 1, 0.3, 1] }}
               >
                 <div
                   style={{
@@ -357,13 +358,19 @@ export function TestimonialsSection() {
           {testimonials.map((t, index) => (
             <motion.div
               key={t.id}
-              initial={{ opacity: 0, x: 60 }}
+              initial={{ opacity: 0, x: reduce ? 0 : 24 }}
               animate={{
                 opacity: activeIndex === index ? 1 : 0,
-                x: activeIndex === index ? 0 : 50,
+                x: activeIndex === index ? 0 : (reduce ? 0 : 20),
                 scale: activeIndex === index ? 1 : 0.97,
               }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+              transition={
+                reduce
+                  ? { duration: 0.1 }
+                  : activeIndex === index
+                    ? { duration: 0.45, ease: [0.16, 1, 0.3, 1] }
+                    : { duration: 0.28, ease: [0.4, 0, 1, 1] }
+              }
               style={{
                 gridRow: 1,
                 gridColumn: 1,

@@ -20,7 +20,7 @@ export function SectionHeader({
       <p
         style={{
           fontFamily: "var(--font-dm)",
-          fontSize: 11,
+          fontSize: 12,
           letterSpacing: "0.3em",
           textTransform: "uppercase",
           color: "#06b6d4",

@@ -97,7 +97,7 @@ export function NextSteps() {
           }} className="steps-connector" />
 
           {steps.map((s, i) => (
-            <RevealWrapper key={s.num} visible={visible} delay={i * 120}>
+            <RevealWrapper key={s.num} visible={visible} delay={i * 80}>
               <div style={{
                 padding: "0 32px 0 0",
                 paddingLeft: i > 0 ? 32 : 0,
