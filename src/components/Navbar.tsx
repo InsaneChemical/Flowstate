@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { CalendlyButton } from "./CalendlyButton";
 
@@ -12,6 +13,8 @@ const links = [
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const p = pathname === "/" ? "" : "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -50,7 +53,7 @@ export function Navbar() {
           }}
         >
           {/* Logo */}
-          <a href="#home" style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
+          <a href={`${p}#home`} style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
             <Image src="/logo-transparent.png" alt="Flowstate Media" width={120} height={28} style={{ height: 28, width: "auto" }} />
           </a>
 
@@ -68,7 +71,7 @@ export function Navbar() {
             {links.map((l) => (
               <a
                 key={l.href}
-                href={l.href}
+                href={`${p}${l.href}`}
                 style={{
                   fontFamily: "var(--font-dm)",
                   fontSize: 13,
@@ -162,7 +165,7 @@ export function Navbar() {
           {links.map((l) => (
             <a
               key={l.href}
-              href={l.href}
+              href={`${p}${l.href}`}
               onClick={() => setOpen(false)}
               style={{
                 fontFamily: "var(--font-syne)",
