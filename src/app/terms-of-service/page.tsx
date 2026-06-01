@@ -36,10 +36,11 @@ const sections = [
           <li>Web3 and blockchain community management</li>
         </ul>
         <p style={{ marginTop: 16 }}>
-          The specific scope, deliverables, timeline, and fees for any engagement
-          are agreed upon in a separate written proposal or service agreement
-          between Flowstate Media and the client. These Terms of Service
-          supplement and do not replace any such agreement.
+          We are based in South Africa and serve clients locally and
+          internationally. The specific scope, deliverables, timeline, and fees
+          for any engagement are agreed upon in a separate written proposal or
+          service agreement between Flowstate Media and the client. These Terms
+          of Service supplement and do not replace any such agreement.
         </p>
       </>
     ),
@@ -168,12 +169,23 @@ const sections = [
   {
     heading: "Governing Law",
     body: (
-      <p>
-        These Terms of Service are governed by and construed in accordance with
-        the laws of South Africa. Any disputes arising from or relating to these
-        terms shall be subject to the exclusive jurisdiction of the South African
-        courts.
-      </p>
+      <>
+        <p style={{ marginBottom: 16 }}>
+          These Terms of Service are governed by and construed in accordance with
+          the laws of South Africa. Any disputes arising from or relating to these
+          terms shall be subject to the exclusive jurisdiction of the South African
+          courts.
+        </p>
+        <p>
+          International clients acknowledge that by engaging our services they
+          agree to South African law as the governing law for the engagement.
+          Where mandatory consumer protection or data privacy laws in your
+          jurisdiction impose obligations that cannot be contractually excluded,
+          those obligations will continue to apply to the extent required by law.
+          If you have questions about how this affects you, please contact us
+          before engaging our services.
+        </p>
+      </>
     ),
   },
   {

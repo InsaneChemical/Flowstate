@@ -14,9 +14,11 @@ const sections = [
       <p>
         Flowstate Media (&ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;) is a digital media
         and growth agency providing social media management, website design, AI
-        automation, and Web3 community services. This Privacy Policy explains how
-        we collect, use, disclose, and protect personal information when you visit
-        our website or engage our services.
+        automation, and Web3 community services. We are based in South Africa and
+        work with clients both locally and internationally. This Privacy Policy
+        explains how we collect, use, disclose, and protect personal information
+        when you visit our website or engage our services, regardless of where you
+        are located.
       </p>
     ),
   },
@@ -126,6 +128,14 @@ const sections = [
           <li>Request deletion of your personal data, subject to any legal obligations.</li>
           <li>Withdraw consent to marketing communications at any time.</li>
         </ul>
+        <p style={{ marginTop: 16 }}>
+          If you are located in the European Union or United Kingdom, you may also
+          have rights under the GDPR or UK GDPR — including the right to data
+          portability and the right to lodge a complaint with your local supervisory
+          authority. Clients in other jurisdictions may have equivalent rights under
+          their applicable local privacy laws. We respect and honour all such
+          requests regardless of where you are based.
+        </p>
         <p style={{ marginTop: 16 }}>
           To exercise any of these rights, contact us at the email address below.
           We will respond within a reasonable timeframe.
