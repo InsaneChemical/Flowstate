@@ -189,10 +189,10 @@ const sections = [
         </a>{" "}
         or email{" "}
         <a
-          href="mailto:hello@flowstatemedia.co"
+          href="mailto:escorpiao.enterprise@gmail.com"
           style={{ color: "#06b6d4", textDecoration: "none" }}
         >
-          hello@flowstatemedia.co
+          escorpiao.enterprise@gmail.com
         </a>
         .
       </p>
