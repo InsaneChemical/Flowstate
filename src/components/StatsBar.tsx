@@ -110,11 +110,21 @@ export function StatsBar() {
 
   return (
     <div style={{ padding: "0 24px 64px" }}>
+      <style>{`
+        @media (max-width: 600px) {
+          .stats-bar-inner { flex-wrap: wrap !important; }
+          .stat-cell      { flex: 0 0 50% !important; box-sizing: border-box; padding: 20px 16px !important; }
+          .stat-cell-0, .stat-cell-2 { border-right: 1px solid rgba(255,255,255,0.06) !important; }
+          .stat-cell-1, .stat-cell-3 { border-right: none !important; }
+          .stat-cell-0, .stat-cell-1 { border-bottom: 1px solid rgba(255,255,255,0.06); }
+          .stat-cell-2, .stat-cell-3 { border-bottom: none; }
+        }
+      `}</style>
       <div style={{ maxWidth: 1060, margin: "0 auto" }}>
         <RevealWrapper visible={fadeVisible}>
           <div
             ref={revealRef}
-            className="glass border-glow-cyan"
+            className="glass border-glow-cyan stats-bar-inner"
             style={{
               display: "flex",
               alignItems: "stretch",
@@ -125,6 +135,7 @@ export function StatsBar() {
             {stats.map((stat, i) => (
               <div
                 key={stat.label}
+                className={`stat-cell stat-cell-${i}`}
                 style={{
                   flex: 1,
                   padding: "24px 32px",

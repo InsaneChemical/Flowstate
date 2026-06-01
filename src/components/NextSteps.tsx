@@ -52,7 +52,7 @@ export function NextSteps() {
         <div style={{ marginBottom: 48 }}>
           <p style={{
             fontFamily: "var(--font-dm)",
-            fontSize: 11,
+            fontSize: 12,
             letterSpacing: "0.3em",
             textTransform: "uppercase",
             color: "#06b6d4",
@@ -71,7 +71,7 @@ export function NextSteps() {
             maxWidth: 480,
           }}>
             Three steps from here{" "}
-            <span style={{ color: "#475569" }}>to moving.</span>
+            <span style={{ color: "#64748b" }}>to moving.</span>
           </h2>
         </div>
 
@@ -126,7 +126,7 @@ export function NextSteps() {
                 {/* Step number */}
                 <div style={{
                   fontFamily: "var(--font-syne)",
-                  fontSize: 11,
+                  fontSize: 12,
                   fontWeight: 800,
                   background: `linear-gradient(135deg, ${s.color}, ${s.color === "#06b6d4" ? "#818cf8" : "#06b6d4"})`,
                   WebkitBackgroundClip: "text",

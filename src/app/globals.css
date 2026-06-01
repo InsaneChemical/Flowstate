@@ -110,10 +110,16 @@ a, button, [role="button"] { cursor: pointer; }
 /* ─── Services section — mobile readable body text ─── */
 @media (max-width: 600px) {
   #services h3 { font-size: 16px !important; }
-  #services p  { font-size: 15px !important; line-height: 1.75 !important; }
+  #services p  { font-size: 16px !important; line-height: 1.75 !important; }
 }
 
 /* ─── Global mobile minimum body text (WCAG: no iOS auto-zoom below 16px) ─── */
 @media (max-width: 480px) {
-  p, li, span:not([class]) { font-size: max(var(--fs, 15px), 15px); }
+  p, li { font-size: max(var(--fs, 16px), 16px); }
+}
+
+/* ─── Legal pages — mobile padding ─── */
+@media (max-width: 600px) {
+  .legal-hero { padding-top: 110px !important; padding-bottom: 40px !important; }
+  .legal-body { padding-top: 48px !important; padding-bottom: 64px !important; }
 }
