@@ -226,8 +226,8 @@ export function TestimonialsSection() {
               margin: 0,
             }}
           >
-            Real outcomes from real businesses. No cherry-picked screenshots
-            — just the results we&apos;re most proud of.
+            Every project here reflects a problem solved, a brand improved,
+            or a better digital experience created for a real business.
           </p>
 
           {/* Dot nav */}
