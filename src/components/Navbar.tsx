@@ -54,7 +54,7 @@ export function Navbar() {
         >
           {/* Logo */}
           <a href={`${p}#home`} style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
-            <Image src="/logo-transparent.png" alt="Flowstate Media" width={120} height={28} style={{ height: 28, width: "auto" }} />
+            <Image src="/logo-transparent.png" alt="Flowstate Media" width={120} height={28} priority style={{ height: "28px", width: "auto" }} />
           </a>
 
           {/* Desktop links */}

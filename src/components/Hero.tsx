@@ -49,7 +49,7 @@ export function Hero() {
       />
 
       <div
-        className="section-inner"
+        className="section-inner hero-grid"
         style={{
           width: "100%",
           padding: "0 24px",
@@ -64,7 +64,7 @@ export function Hero() {
         {/* Left: Copy */}
         <div>
           {/* Badge row */}
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 28, ...reveal(mounted, 0) }}>
+          <div className="hero-badge-row" style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 28, ...reveal(mounted, 0) }}>
             {badges.map((b) => (
               <span
                 key={b}
@@ -120,7 +120,7 @@ export function Hero() {
           </p>
 
           {/* CTAs */}
-          <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 28, ...reveal(mounted, 320) }}>
+          <div className="hero-cta-row" style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 28, ...reveal(mounted, 320) }}>
             <CalendlyButton className="btn-primary" style={{ padding: "14px 28px", fontSize: 15 }}>
               Book a Call
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
@@ -135,6 +135,7 @@ export function Hero() {
 
           {/* Trust badge */}
           <div
+            className="hero-trust-row"
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -157,6 +158,7 @@ export function Hero() {
 
         {/* Right: Hero Visual */}
         <div
+          className="hero-visual-col"
           style={{
             display: "flex",
             justifyContent: "center",
@@ -169,15 +171,15 @@ export function Hero() {
 
       <style>{`
         @media (max-width: 900px) {
-          #home > div { grid-template-columns: 1fr !important; text-align: center; }
-          #home > div > div:last-child { display: none; }
-          #home > div > div:first-child > div:nth-child(2) { font-size: 42px !important; }
-          #home > div > div:first-child > div:nth-child(1) { justify-content: center; }
-          #home > div > div:first-child > div:nth-child(4) { justify-content: center; }
+          .hero-grid { grid-template-columns: 1fr !important; text-align: center; }
+          .hero-visual-col { display: none !important; }
+          .hero-badge-row { justify-content: center !important; }
+          .hero-cta-row  { justify-content: center !important; }
+          .hero-trust-row { margin: 0 auto !important; }
         }
         @media (max-width: 600px) {
-          #home { padding-top: 80px !important; padding-bottom: 60px !important; }
-          #home > div { gap: 32px !important; padding: 0 16px !important; }
+          #home { padding-top: 80px !important; padding-bottom: 56px !important; }
+          .hero-grid { gap: 0 !important; padding: 0 20px !important; }
           #home p[style] { font-size: 16px !important; }
         }
       `}</style>
