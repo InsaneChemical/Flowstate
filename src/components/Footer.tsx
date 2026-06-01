@@ -228,10 +228,13 @@ export function Footer() {
             © {new Date().getFullYear()} Flowstate Media. All rights reserved.
           </p>
           <div style={{ display: "flex", gap: 24 }}>
-            {["Privacy Policy", "Terms of Service"].map((item) => (
+            {[
+              { label: "Privacy Policy", href: "/privacy-policy" },
+              { label: "Terms of Service", href: "/terms-of-service" },
+            ].map((item) => (
               <a
-                key={item}
-                href="#"
+                key={item.label}
+                href={item.href}
                 style={{
                   fontFamily: "var(--font-dm)",
                   fontSize: 12,
@@ -242,7 +245,7 @@ export function Footer() {
                 onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#94a3b8")}
                 onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#64748b")}
               >
-                {item}
+                {item.label}
               </a>
             ))}
           </div>
