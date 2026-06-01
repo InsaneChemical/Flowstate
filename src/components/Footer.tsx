@@ -10,16 +10,20 @@ const services = [
 ];
 
 const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "System", href: "#showcase" },
-  { label: "Process", href: "#process" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/#services" },
+  { label: "System", href: "/#showcase" },
+  { label: "Process", href: "/#process" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export function Footer() {
   return (
     <footer
+      className="footer-root"
       style={{
+        position: "relative",
+        zIndex: 1,
         borderTop: "1px solid rgba(255,255,255,0.06)",
         background: "rgba(3,6,12,0.9)",
         padding: "64px 24px 32px",
@@ -34,7 +38,7 @@ export function Footer() {
             gap: 48,
             marginBottom: 56,
           }}
-          className="footer-grid"
+          className="footer-grid footer-main-grid"
         >
           {/* Brand col */}
           <div>
@@ -149,7 +153,7 @@ export function Footer() {
               {services.map((s) => (
                 <li key={s}>
                   <a
-                    href="#services"
+                    href="/#services"
                     style={{
                       fontFamily: "var(--font-dm)",
                       fontSize: 14,
@@ -251,7 +255,16 @@ export function Footer() {
           </div>
         </div>
       </div>
-      <style>{`@media(max-width:768px){ .footer-grid{grid-template-columns:1fr!important} }`}</style>
+      <style>{`
+        @media(max-width:768px){
+          .footer-grid { grid-template-columns: 1fr !important; }
+          .footer-main-grid { gap: 32px !important; margin-bottom: 36px !important; }
+        }
+        @media(max-width:600px){
+          .footer-root { padding: 40px 20px 24px !important; }
+          .footer-main-grid { gap: 28px !important; margin-bottom: 28px !important; }
+        }
+      `}</style>
     </footer>
   );
 }
