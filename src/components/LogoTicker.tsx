@@ -159,7 +159,7 @@ export function LogoTicker() {
       <p
         style={{
           fontFamily: "var(--font-dm)",
-          fontSize: 12,
+          fontSize: 11,
           fontWeight: 600,
           letterSpacing: "0.25em",
           textTransform: "uppercase",
@@ -194,9 +194,7 @@ export function LogoTicker() {
 
       <style>{`
         .ticker-track { animation: ticker 36s linear infinite; }
-        @media (hover: hover) {
-          .ticker-track:hover { animation-play-state: paused; }
-        }
+        .ticker-track:hover { animation-play-state: paused; }
         @keyframes ticker {
           from { transform: translateX(0); }
           to   { transform: translateX(-50%); }

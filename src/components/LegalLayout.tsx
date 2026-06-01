@@ -44,7 +44,6 @@ export function LegalLayout({ badge, title, subtitle, lastUpdated, sections }: L
 
         {/* Hero strip */}
         <div
-          className="legal-hero"
           style={{
             position: "relative",
             zIndex: 1,
@@ -127,7 +126,6 @@ export function LegalLayout({ badge, title, subtitle, lastUpdated, sections }: L
 
         {/* Body */}
         <div
-          className="legal-body"
           style={{
             position: "relative",
             zIndex: 1,
