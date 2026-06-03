@@ -101,7 +101,7 @@ export function Footer() {
               </a>
               {/* X / Twitter */}
               <a
-                href="https://x.com"
+                href="https://x.com/flowstatebuilds"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Flowstate Media on X (Twitter)"
