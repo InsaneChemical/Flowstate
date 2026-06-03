@@ -168,10 +168,10 @@ const sections = [
         </a>{" "}
         or email us directly at{" "}
         <a
-          href="mailto:escorpiao.enterprise@gmail.com"
+          href="mailto:nuno@flowstatemedia.co.za"
           style={{ color: "#06b6d4", textDecoration: "none" }}
         >
-          escorpiao.enterprise@gmail.com
+          nuno@flowstatemedia.co.za
         </a>
         .
       </p>
