@@ -506,9 +506,12 @@ export function TestimonialsSection() {
                           style={{
                             display: "inline-flex",
                             alignItems: "center",
+                            justifyContent: "center",
                             color: "#64748b",
                             transition: "color 0.2s",
                             flexShrink: 0,
+                            padding: "16px 8px",
+                            margin: "-16px -8px",
                           }}
                           onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#06b6d4")}
                           onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#64748b")}

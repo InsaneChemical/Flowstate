@@ -73,9 +73,9 @@ export function Footer() {
                 rel="noopener noreferrer"
                 aria-label="Flowstate Media on Instagram"
                 style={{
-                  width: 36,
-                  height: 36,
-                  borderRadius: 10,
+                  width: 44,
+                  height: 44,
+                  borderRadius: 12,
                   background: "rgba(255,255,255,0.04)",
                   border: "1px solid rgba(255,255,255,0.08)",
                   display: "flex",
@@ -106,9 +106,9 @@ export function Footer() {
                 rel="noopener noreferrer"
                 aria-label="Flowstate Media on X (Twitter)"
                 style={{
-                  width: 36,
-                  height: 36,
-                  borderRadius: 10,
+                  width: 44,
+                  height: 44,
+                  borderRadius: 12,
                   background: "rgba(255,255,255,0.04)",
                   border: "1px solid rgba(255,255,255,0.08)",
                   display: "flex",

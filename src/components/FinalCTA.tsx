@@ -330,7 +330,7 @@ export function FinalCTA() {
               >
                 Prefer to talk now?{" "}
                 <CalendlyButton
-                  style={{ background: "none", border: "none", padding: 0, color: "#06b6d4", fontSize: 13, fontFamily: "var(--font-dm)", cursor: "pointer", textDecoration: "underline" }}
+                  style={{ background: "none", border: "none", padding: "12px 4px", margin: "-12px 0", color: "#06b6d4", fontSize: 13, fontFamily: "var(--font-dm)", cursor: "pointer", textDecoration: "underline" }}
                 >
                   Book a call directly
                 </CalendlyButton>

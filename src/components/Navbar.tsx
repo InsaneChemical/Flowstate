@@ -111,7 +111,7 @@ export function Navbar() {
                 border: "none",
                 color: "#f8fafc",
                 cursor: "pointer",
-                padding: 8,
+                padding: 11,
                 display: "none",
               }}
               className="show-mobile"
