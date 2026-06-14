@@ -316,9 +316,9 @@ export function TestimonialsSection() {
             <div style={{ marginLeft: 4 }}>
               <motion.div
                 key={active.name}
-                initial={{ opacity: 0, y: reduce ? 0 : 6 }}
+                initial={{ opacity: 0, y: reduce ? 0 : 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: reduce ? 0.1 : 0.3, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: reduce ? 0.1 : 0.45, ease: [0.16, 1, 0.3, 1] }}
               >
                 <div
                   style={{
@@ -358,18 +358,26 @@ export function TestimonialsSection() {
           {testimonials.map((t, index) => (
             <motion.div
               key={t.id}
-              initial={{ opacity: 0, x: reduce ? 0 : 24 }}
+              initial={{ opacity: 0, y: reduce ? 0 : 16, scale: 0.98 }}
               animate={{
                 opacity: activeIndex === index ? 1 : 0,
-                x: activeIndex === index ? 0 : (reduce ? 0 : 20),
-                scale: activeIndex === index ? 1 : 0.97,
+                y: activeIndex === index ? 0 : (reduce ? 0 : -8),
+                scale: activeIndex === index ? 1 : 0.98,
               }}
               transition={
                 reduce
                   ? { duration: 0.1 }
                   : activeIndex === index
-                    ? { duration: 0.45, ease: [0.16, 1, 0.3, 1] }
-                    : { duration: 0.28, ease: [0.4, 0, 1, 1] }
+                    ? {
+                        opacity: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
+                        y:       { duration: 0.65, ease: [0.16, 1, 0.3, 1] },
+                        scale:   { duration: 0.65, ease: [0.16, 1, 0.3, 1] },
+                      }
+                    : {
+                        opacity: { duration: 0.22, ease: [0.4, 0, 1, 1] },
+                        y:       { duration: 0.22, ease: [0.4, 0, 1, 1] },
+                        scale:   { duration: 0.22, ease: [0.4, 0, 1, 1] },
+                      }
               }
               style={{
                 gridRow: 1,

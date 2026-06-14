@@ -1,10 +1,12 @@
 "use client";
 import { useState } from "react";
+import { motion, useReducedMotion } from "motion/react";
 import { CalendlyButton } from "./CalendlyButton";
 
 type FormState = "idle" | "submitting" | "success" | "error";
 
 export function FinalCTA() {
+  const reduce = useReducedMotion();
   const [form, setForm] = useState({
     name: "",
     business: "",
@@ -77,7 +79,17 @@ export function FinalCTA() {
 
       <div className="section-inner" style={{ position: "relative" }}>
         {/* Header */}
-        <div className="cta-header" style={{ textAlign: "center", marginBottom: 56 }}>
+        <motion.div
+          className="cta-header"
+          style={{ textAlign: "center", marginBottom: 56 }}
+          initial={reduce ? { opacity: 0 } : { opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={reduce ? { duration: 0.15 } : {
+            opacity: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+            y:       { duration: 0.75, ease: [0.16, 1, 0.3, 1] },
+          }}
+        >
           <p
             style={{
               fontFamily: "var(--font-dm)",
@@ -116,11 +128,18 @@ export function FinalCTA() {
           >
             Tell us where you are and where you want to go. We'll get back to you and take it from there.
           </p>
-        </div>
+        </motion.div>
 
         {/* Form card */}
-        <div
+        <motion.div
           className="glass"
+          initial={reduce ? { opacity: 0 } : { opacity: 0, y: 32 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={reduce ? { duration: 0.15 } : {
+            opacity: { duration: 0.65, delay: 0.1, ease: [0.16, 1, 0.3, 1] },
+            y:       { duration: 0.8,  delay: 0.1, ease: [0.16, 1, 0.3, 1] },
+          }}
           style={{
             maxWidth: 640,
             margin: "0 auto",
@@ -337,7 +356,7 @@ export function FinalCTA() {
               </p>
             </form>
           )}
-        </div>
+        </motion.div>
       </div>
       <style>{`
         @media(max-width:600px){

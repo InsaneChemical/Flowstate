@@ -1,5 +1,5 @@
 "use client";
-import { useReducedMotion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 
 interface RevealWrapperProps {
   visible: boolean;
@@ -18,24 +18,30 @@ export function RevealWrapper({
 }: RevealWrapperProps) {
   const reduce = useReducedMotion();
 
-  const initial =
-    direction === "right"
-      ? "translateX(28px)"
-      : "translateY(32px)";
+  // Collapsed (hidden) state
+  const hidden = reduce
+    ? { opacity: 0 }
+    : { opacity: 0, ...(direction === "right" ? { x: 24 } : { y: 28 }) };
+
+  // Expanded (visible) state — always reset both axes so no stale offsets
+  const show = { opacity: 1, x: 0, y: 0 };
 
   return (
-    <div
-      style={{
-        opacity: visible ? 1 : 0,
-        transform: visible || reduce ? "translate(0,0)" : initial,
-        transition: reduce
-          ? `opacity 0.2s ease ${delay}ms`
-          : `opacity 0.65s ease ${delay}ms, transform 0.75s cubic-bezier(0.16,1,0.3,1) ${delay}ms`,
-        willChange: "opacity, transform",
-        ...style,
-      }}
+    <motion.div
+      initial={hidden}
+      animate={visible ? show : hidden}
+      transition={
+        reduce
+          ? { duration: 0.15 }
+          : {
+              opacity:  { duration: 0.6,  delay: delay / 1000, ease: [0.16, 1, 0.3, 1] },
+              x:        { duration: 0.75, delay: delay / 1000, ease: [0.16, 1, 0.3, 1] },
+              y:        { duration: 0.75, delay: delay / 1000, ease: [0.16, 1, 0.3, 1] },
+            }
+      }
+      style={style}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }
