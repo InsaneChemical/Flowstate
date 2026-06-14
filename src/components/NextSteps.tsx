@@ -105,7 +105,7 @@ export function NextSteps() {
                 zIndex: 1,
               }}>
                 {/* Icon circle */}
-                <div style={{
+                <div className="step-icon" style={{
                   width: 52,
                   height: 52,
                   borderRadius: "50%",
@@ -166,7 +166,10 @@ export function NextSteps() {
         @media(max-width:768px){
           .next-steps-grid{ grid-template-columns:1fr !important; gap: 40px; }
           .steps-connector{ display:none; }
-          .step-item{ padding-left: 0 !important; padding-right: 0 !important; }
+          .step-item{ padding-left: 0 !important; padding-right: 0 !important; text-align: center; }
+          .step-item .step-icon{ margin-left: auto !important; margin-right: auto !important; }
+          .next-steps-header{ text-align: center; }
+          .next-steps-header h2{ max-width: 100% !important; }
         }
         @media(max-width:600px){
           .next-steps-section { padding-top: 40px !important; }
