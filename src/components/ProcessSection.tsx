@@ -53,8 +53,9 @@ export function ProcessSection() {
           {steps.map((s, i) => (
             <RevealWrapper key={s.num} visible={visible} delay={i * 100}>
               <div
+                className="process-step"
                 style={{
-                  padding: "32px 28px 32px 0",
+                  padding: "32px 0",
                   borderRight: i < steps.length - 1
                     ? "1px solid rgba(255,255,255,0.05)"
                     : "none",
@@ -105,8 +106,14 @@ export function ProcessSection() {
         </div>
       </div>
       <style>{`
-        @media(max-width:768px){ .process-list{grid-template-columns:repeat(2,1fr)!important} }
-        @media(max-width:480px){ .process-list{grid-template-columns:1fr!important} }
+        @media(max-width:768px){
+          .process-list{ grid-template-columns:repeat(2,1fr)!important; }
+          .process-step{ padding-left: 0 !important; padding-right: 20px !important; }
+        }
+        @media(max-width:480px){
+          .process-list{ grid-template-columns:1fr!important; }
+          .process-step{ padding-left: 0 !important; padding-right: 0 !important; }
+        }
       `}</style>
     </section>
   );

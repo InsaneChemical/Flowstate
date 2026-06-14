@@ -98,8 +98,7 @@ export function NextSteps() {
 
           {steps.map((s, i) => (
             <RevealWrapper key={s.num} visible={visible} delay={i * 80}>
-              <div style={{
-                padding: "0 32px 0 0",
+              <div className="step-item" style={{
                 paddingLeft: i > 0 ? 32 : 0,
                 paddingRight: i < steps.length - 1 ? 32 : 0,
                 position: "relative",
@@ -167,6 +166,7 @@ export function NextSteps() {
         @media(max-width:768px){
           .next-steps-grid{ grid-template-columns:1fr !important; gap: 40px; }
           .steps-connector{ display:none; }
+          .step-item{ padding-left: 0 !important; padding-right: 0 !important; }
         }
         @media(max-width:600px){
           .next-steps-section { padding-top: 40px !important; }
