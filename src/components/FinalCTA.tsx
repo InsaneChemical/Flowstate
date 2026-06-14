@@ -130,6 +130,59 @@ export function FinalCTA() {
           </p>
         </motion.div>
 
+        {/* Trust pillars — reduce friction before the form */}
+        <motion.div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: 40,
+            marginBottom: 36,
+            flexWrap: "wrap",
+          }}
+          initial={reduce ? { opacity: 0 } : { opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={reduce ? { duration: 0.15 } : {
+            opacity: { duration: 0.5, ease: [0.16, 1, 0.3, 1] },
+            y:       { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+          }}
+        >
+          {([
+            {
+              icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" strokeWidth="2" strokeLinecap="round"><polyline points="20 6 9 17 4 12" /></svg>,
+              text: "No lock-in contracts",
+            },
+            {
+              icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>,
+              text: "Reply within 24 hours",
+            },
+            {
+              icon: <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#06b6d4" strokeWidth="2" strokeLinecap="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>,
+              text: "First delivery in 2 weeks",
+            },
+          ] as { icon: React.ReactNode; text: string }[]).map((item) => (
+            <div
+              key={item.text}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 7,
+              }}
+            >
+              {item.icon}
+              <span style={{
+                fontFamily: "var(--font-dm)",
+                fontSize: 13,
+                color: "#64748b",
+                fontWeight: 500,
+              }}>
+                {item.text}
+              </span>
+            </div>
+          ))}
+        </motion.div>
+
         {/* Form card */}
         <motion.div
           className="glass"

@@ -137,7 +137,52 @@ export function ServicesSection() {
             </RevealWrapper>
           ))}
         </div>
+
+        {/* Bottom CTA — never let the section dead-end */}
+        <div
+          className="services-bottom-cta"
+          style={{
+            borderTop: "1px solid rgba(255,255,255,0.05)",
+            marginTop: 8,
+            paddingTop: 28,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: 24,
+            flexWrap: "wrap",
+          }}
+        >
+          <p style={{
+            fontFamily: "var(--font-dm)",
+            fontSize: 15,
+            color: "#64748b",
+            margin: 0,
+            lineHeight: 1.6,
+          }}>
+            Want all of this working together?{" "}
+            <span style={{ color: "#94a3b8", fontWeight: 500 }}>
+              We offer a Full Growth System
+            </span>{" "}
+            that combines every service above.
+          </p>
+          <a
+            href="#contact"
+            className="btn-secondary"
+            style={{ padding: "12px 24px", fontSize: 14, flexShrink: 0 }}
+          >
+            Get a custom quote
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </a>
+        </div>
       </div>
+      <style>{`
+        @media (max-width: 600px) {
+          .services-bottom-cta { flex-direction: column; align-items: flex-start !important; }
+        }
+      `}</style>
     </section>
   );
 }

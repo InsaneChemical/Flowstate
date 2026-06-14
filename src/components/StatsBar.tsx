@@ -1,26 +1,22 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import { RevealWrapper } from "./ui/RevealWrapper";
+import { motion } from "motion/react";
 
 type StatDef = {
-  target: number | null; // null = non-numeric, keeps original text
+  target: number | null;
   suffix: string;
-  text: string;          // shown as-is when target is null
+  text: string;
   label: string;
+  sublabel?: string;
 };
 
 const stats: StatDef[] = [
-  { target: 20,   suffix: "+", text: "20+",  label: "Clients Served"   },
-  { target: 4,    suffix: "+", text: "4+",   label: "Years Experience" },
-  { target: null, suffix: "",  text: "Web3", label: "Community Native" },
-  { target: 100,  suffix: "%", text: "100%", label: "Growth Focused"   },
+  { target: 20,   suffix: "+", text: "20+",  label: "Clients Served",    sublabel: "across SA & EU"     },
+  { target: 4,    suffix: "+", text: "4+",   label: "Years Experience",  sublabel: "in digital growth"  },
+  { target: null, suffix: "",  text: "Web3", label: "Community Native",  sublabel: "Telegram & Discord" },
+  { target: 100,  suffix: "%", text: "100%", label: "Growth Focused",    sublabel: "on every project"   },
 ];
 
-/* ─── Count-up hook ────────────────────────────────────────────────────────
-   Uses its own IntersectionObserver with rootMargin so it only fires once
-   the bar has been scrolled at least 120px above the viewport bottom —
-   not on initial page load when the bar might just be at the fold edge.
-─────────────────────────────────────────────────────────────────────────── */
 function useCountUpTrigger() {
   const ref = useRef<HTMLDivElement>(null);
   const [triggered, setTriggered] = useState(false);
@@ -28,22 +24,10 @@ function useCountUpTrigger() {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setTriggered(true);
-          observer.disconnect();
-        }
-      },
-      {
-        threshold: 0.25,
-        // Shrink the bottom of the observation window so the element must
-        // be at least ~120 px inside the viewport before counting starts.
-        rootMargin: "0px 0px -120px 0px",
-      }
+      ([entry]) => { if (entry.isIntersecting) { setTriggered(true); observer.disconnect(); } },
+      { threshold: 0.25, rootMargin: "0px 0px -80px 0px" }
     );
-
     observer.observe(el);
     return () => observer.disconnect();
   }, []);
@@ -51,20 +35,9 @@ function useCountUpTrigger() {
   return { ref, triggered };
 }
 
-/* ─── Single animated number ───────────────────────────────────────────── */
 function AnimatedNumber({
-  target,
-  suffix,
-  text,
-  triggered,
-  delay = 0,
-}: {
-  target: number | null;
-  suffix: string;
-  text: string;
-  triggered: boolean;
-  delay?: number;
-}) {
+  target, suffix, text, triggered, delay = 0,
+}: { target: number | null; suffix: string; text: string; triggered: boolean; delay?: number }) {
   const [display, setDisplay] = useState<string>("0");
   const hasAnimated = useRef(false);
 
@@ -73,24 +46,19 @@ function AnimatedNumber({
 
     const run = () => {
       hasAnimated.current = true;
-      const duration = Math.min(1800, target * 55 + 700);
+      const duration = Math.min(1600, target * 50 + 600);
       const startTime = performance.now();
-
       function tick(now: number) {
         const elapsed = now - startTime;
         const t = Math.min(elapsed / duration, 1);
-        const eased = 1 - Math.pow(1 - t, 3); // ease-out cubic
+        const eased = 1 - Math.pow(1 - t, 3);
         setDisplay(String(Math.round(eased * target!)));
         if (t < 1) requestAnimationFrame(tick);
       }
-
       requestAnimationFrame(tick);
     };
 
-    if (delay > 0) {
-      const id = setTimeout(run, delay);
-      return () => clearTimeout(id);
-    }
+    if (delay > 0) { const id = setTimeout(run, delay); return () => clearTimeout(id); }
     run();
   }, [triggered, target, delay]);
 
@@ -98,91 +66,107 @@ function AnimatedNumber({
   return <>{display}{suffix}</>;
 }
 
-/* ─── StatsBar ─────────────────────────────────────────────────────────── */
 export function StatsBar() {
-  const { ref: revealRef, triggered } = useCountUpTrigger();
-  // RevealWrapper uses the same trigger so the fade-in and count-up sync
-  const [fadeVisible, setFadeVisible] = useState(false);
-
-  useEffect(() => {
-    if (triggered) setFadeVisible(true);
-  }, [triggered]);
+  const { ref, triggered } = useCountUpTrigger();
 
   return (
-    <div className="stats-outer" style={{ padding: "0 24px 64px" }}>
-      <style>{`
-        @media (max-width: 600px) {
-          .stats-outer    { padding: 0 16px 36px !important; }
-          .stats-bar-inner { flex-wrap: wrap !important; }
-          .stat-cell      { flex: 0 0 50% !important; box-sizing: border-box; padding: 20px 16px !important; }
-          .stat-cell-0, .stat-cell-2 { border-right: 1px solid rgba(255,255,255,0.06) !important; }
-          .stat-cell-1, .stat-cell-3 { border-right: none !important; }
-          .stat-cell-0, .stat-cell-1 { border-bottom: 1px solid rgba(255,255,255,0.06); }
-          .stat-cell-2, .stat-cell-3 { border-bottom: none; }
-        }
-      `}</style>
-      <div style={{ maxWidth: 1060, margin: "0 auto" }}>
-        <RevealWrapper visible={fadeVisible}>
-          <div
-            ref={revealRef}
-            className="glass border-glow-cyan stats-bar-inner"
+    <div
+      ref={ref}
+      style={{
+        borderTop: "1px solid rgba(255,255,255,0.05)",
+        borderBottom: "1px solid rgba(255,255,255,0.05)",
+        padding: "0 24px 0",
+        marginBottom: 0,
+      }}
+    >
+      <div
+        className="stats-editorial-grid"
+        style={{ maxWidth: 1060, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(4,1fr)" }}
+      >
+        {stats.map((stat, i) => (
+          <motion.div
+            key={stat.label}
+            initial={{ opacity: 0, y: 16 }}
+            animate={triggered ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+            className={`stat-editorial stat-editorial-${i}`}
             style={{
-              display: "flex",
-              alignItems: "stretch",
-              borderRadius: 16,
-              overflow: "hidden",
+              padding: "44px 0",
+              textAlign: "center",
+              borderRight: i < stats.length - 1 ? "1px solid rgba(255,255,255,0.05)" : "none",
             }}
           >
-            {stats.map((stat, i) => (
+            {/* Big number */}
+            <div
+              className="gradient-text"
+              style={{
+                fontFamily: "var(--font-syne)",
+                fontSize: "clamp(40px, 3.8vw, 56px)",
+                fontWeight: 800,
+                letterSpacing: "-0.04em",
+                lineHeight: 1,
+                marginBottom: 10,
+              }}
+            >
+              <AnimatedNumber
+                target={stat.target}
+                suffix={stat.suffix}
+                text={stat.text}
+                triggered={triggered}
+                delay={i * 80}
+              />
+            </div>
+
+            {/* Label */}
+            <div
+              style={{
+                fontFamily: "var(--font-syne)",
+                fontSize: 13,
+                fontWeight: 600,
+                color: "#94a3b8",
+                letterSpacing: "0.04em",
+                marginBottom: 4,
+              }}
+            >
+              {stat.label}
+            </div>
+
+            {/* Sublabel */}
+            {stat.sublabel && (
               <div
-                key={stat.label}
-                className={`stat-cell stat-cell-${i}`}
                 style={{
-                  flex: 1,
-                  padding: "24px 32px",
-                  textAlign: "center",
-                  borderRight:
-                    i < stats.length - 1
-                      ? "1px solid rgba(255,255,255,0.06)"
-                      : "none",
+                  fontFamily: "var(--font-dm)",
+                  fontSize: 12,
+                  color: "#475569",
+                  letterSpacing: "0.01em",
                 }}
               >
-                <div
-                  className="gradient-text"
-                  style={{
-                    fontFamily: "var(--font-syne)",
-                    fontSize: 28,
-                    fontWeight: 800,
-                    letterSpacing: "-0.03em",
-                    lineHeight: 1,
-                    marginBottom: 6,
-                  }}
-                >
-                  <AnimatedNumber
-                    target={stat.target}
-                    suffix={stat.suffix}
-                    text={stat.text}
-                    triggered={triggered}
-                    delay={i * 80}
-                  />
-                </div>
-                <div
-                  style={{
-                    fontFamily: "var(--font-dm)",
-                    fontSize: 13,
-                    color: "#8899b0",
-                    fontWeight: 500,
-                    letterSpacing: "0.04em",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  {stat.label}
-                </div>
+                {stat.sublabel}
               </div>
-            ))}
-          </div>
-        </RevealWrapper>
+            )}
+          </motion.div>
+        ))}
       </div>
+
+      <style>{`
+        @media (max-width: 600px) {
+          .stats-editorial-grid {
+            grid-template-columns: repeat(2,1fr) !important;
+          }
+          .stat-editorial {
+            padding: 28px 16px !important;
+          }
+          .stat-editorial-0, .stat-editorial-2 {
+            border-right: 1px solid rgba(255,255,255,0.05) !important;
+          }
+          .stat-editorial-1, .stat-editorial-3 {
+            border-right: none !important;
+          }
+          .stat-editorial-0, .stat-editorial-1 {
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+          }
+        }
+      `}</style>
     </div>
   );
 }
