@@ -72,6 +72,7 @@ export function StatsBar() {
   return (
     <div
       ref={ref}
+      className="stats-bar-outer"
       style={{
         borderTop: "1px solid rgba(255,255,255,0.05)",
         borderBottom: "1px solid rgba(255,255,255,0.05)",
@@ -149,12 +150,16 @@ export function StatsBar() {
       </div>
 
       <style>{`
+        @media (max-width: 768px) {
+          .stats-bar-outer { padding: 0 16px !important; }
+          .stat-editorial { padding: 28px 8px !important; }
+        }
         @media (max-width: 600px) {
           .stats-editorial-grid {
             grid-template-columns: repeat(2,1fr) !important;
           }
           .stat-editorial {
-            padding: 28px 16px !important;
+            padding: 20px 8px !important;
           }
           .stat-editorial-0, .stat-editorial-2 {
             border-right: 1px solid rgba(255,255,255,0.05) !important;

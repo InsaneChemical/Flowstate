@@ -25,9 +25,9 @@ export function Hero() {
   return (
     <section
       id="home"
+      className="hero-section"
       style={{
         position: "relative",
-        minHeight: "100svh",
         display: "flex",
         alignItems: "center",
         paddingTop: 100,
@@ -170,15 +170,17 @@ export function Hero() {
       </div>
 
       <style>{`
+        .hero-section { min-height: 100svh; }
         @media (max-width: 900px) {
+          .hero-section { min-height: auto; }
           .hero-grid { grid-template-columns: 1fr !important; text-align: center; }
           .hero-visual-col { display: none !important; }
           .hero-badge-row { justify-content: center !important; }
-          .hero-cta-row  { justify-content: center !important; }
+          .hero-cta-row  { justify-content: center !important; flex-direction: column; align-items: center; }
           .hero-trust-row { margin: 0 auto !important; }
         }
         @media (max-width: 600px) {
-          #home { padding-top: 80px !important; padding-bottom: 56px !important; }
+          #home { padding-top: 88px !important; padding-bottom: 52px !important; }
           .hero-grid { gap: 0 !important; padding: 0 20px !important; }
           #home p[style] { font-size: 16px !important; }
         }

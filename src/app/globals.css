@@ -94,11 +94,11 @@ a, button, [role="button"] { cursor: pointer; }
 
 /* ─── Mobile responsive ─── */
 @media (max-width: 768px) {
-  .section-pad { padding: 64px 20px; }
+  .section-pad { padding: 52px 20px; }
   .section-inner { padding: 0; }
 }
 @media (max-width: 480px) {
-  .section-pad { padding: 44px 16px; }
+  .section-pad { padding: 40px 16px; }
 }
 
 /* ─── Mobile hero text ─── */
@@ -116,6 +116,11 @@ a, button, [role="button"] { cursor: pointer; }
 /* ─── Global mobile minimum body text (WCAG: no iOS auto-zoom below 16px) ─── */
 @media (max-width: 480px) {
   p, li { font-size: max(var(--fs, 16px), 16px); }
+}
+
+/* ─── Section header — tighter on mobile ─── */
+@media (max-width: 768px) {
+  .section-header-wrap { margin-bottom: 32px !important; }
 }
 
 /* ─── Legal pages — mobile padding ─── */

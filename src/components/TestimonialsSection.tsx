@@ -164,6 +164,7 @@ export function TestimonialsSection() {
       >
         {/* ── Left: heading + nav ─────────────────────────────── */}
         <motion.div
+          className="testimonials-left"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
@@ -172,6 +173,7 @@ export function TestimonialsSection() {
         >
           {/* Label */}
           <div
+            className="testimonials-label"
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -233,7 +235,7 @@ export function TestimonialsSection() {
           </p>
 
           {/* Dot nav */}
-          <div style={{ display: "flex", gap: 4, alignItems: "center", paddingTop: 8 }}>
+          <div className="testimonials-dots" style={{ display: "flex", gap: 4, alignItems: "center", paddingTop: 8 }}>
             {testimonials.map((_, i) => (
               <button
                 key={i}
@@ -271,6 +273,7 @@ export function TestimonialsSection() {
 
           {/* Who's speaking */}
           <div
+            className="testimonials-who"
             style={{
               display: "flex",
               alignItems: "center",
@@ -583,10 +586,14 @@ export function TestimonialsSection() {
 
       <style>{`
         @media (max-width: 900px) {
-          .testimonials-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
+          .testimonials-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+          .testimonials-left { text-align: center; align-items: center !important; }
+          .testimonials-label { margin: 0 auto; }
+          .testimonials-dots { justify-content: center !important; }
+          .testimonials-who { justify-content: center !important; flex-wrap: wrap; }
         }
         @media (max-width: 600px) {
-          .testimonial-card { padding: 28px 24px !important; }
+          .testimonial-card { padding: 28px 20px !important; }
         }
       `}</style>
     </section>

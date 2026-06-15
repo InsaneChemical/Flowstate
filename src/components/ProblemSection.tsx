@@ -12,7 +12,7 @@ export function ProblemSection() {
   const { ref, visible } = useScrollReveal();
 
   return (
-    <section className="section-pad" style={{ paddingTop: 0 }}>
+    <section className="section-pad problem-section" style={{ paddingTop: 0 }}>
       <div className="section-inner">
         <RevealWrapper visible={visible}>
           <div
@@ -23,6 +23,7 @@ export function ProblemSection() {
             }}
           >
             <p
+              className="problem-label"
               style={{
                 fontFamily: "var(--font-dm)",
                 fontSize: 12,
@@ -36,6 +37,7 @@ export function ProblemSection() {
               The Challenge
             </p>
             <h2
+              className="problem-heading"
               style={{
                 fontFamily: "var(--font-syne)",
                 fontSize: "clamp(28px,3.5vw,44px)",
@@ -51,10 +53,11 @@ export function ProblemSection() {
               <span style={{ color: "#64748b" }}>They&apos;re short on systems.</span>
             </h2>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+            <div className="problem-list" style={{ display: "flex", flexDirection: "column", gap: 16 }}>
               {problems.map((p, i) => (
                 <div
                   key={i}
+                  className="problem-item"
                   style={{
                     display: "flex",
                     alignItems: "center",
@@ -81,6 +84,14 @@ export function ProblemSection() {
           </div>
         </RevealWrapper>
       </div>
+      <style>{`
+        @media (max-width: 768px) {
+          .problem-section > .section-inner { text-align: center; }
+          .problem-heading { margin-left: auto; margin-right: auto; }
+          .problem-list { align-items: center; }
+          .problem-item { justify-content: center; }
+        }
+      `}</style>
     </section>
   );
 }

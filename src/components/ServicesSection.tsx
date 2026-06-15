@@ -77,6 +77,7 @@ export function ServicesSection() {
           {services.map((s, i) => (
             <RevealWrapper key={s.title} visible={visible} delay={i * 80}>
               <div
+                className="service-item"
                 style={{
                   display: "flex",
                   alignItems: "flex-start",
@@ -107,7 +108,7 @@ export function ServicesSection() {
                 </div>
 
                 {/* Content */}
-                <div style={{ flex: 1 }}>
+                <div className="service-item-content" style={{ flex: 1 }}>
                   <h3
                     style={{
                       fontFamily: "var(--font-syne)",
@@ -179,8 +180,9 @@ export function ServicesSection() {
         </div>
       </div>
       <style>{`
-        @media (max-width: 600px) {
-          .services-bottom-cta { flex-direction: column; align-items: flex-start !important; }
+        @media (max-width: 768px) {
+          .service-item { gap: 16px !important; padding: 14px 0 !important; }
+          .services-bottom-cta { flex-direction: column; align-items: center !important; text-align: center; gap: 16px !important; }
         }
       `}</style>
     </section>

@@ -58,6 +58,7 @@ export function NextSteps() {
 
         {/* Header */}
         <motion.div
+          className="nextsteps-header"
           style={{ marginBottom: 0 }}
           initial={reduce ? { opacity: 0 } : { opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -168,25 +169,26 @@ export function NextSteps() {
           border-left: 1px solid rgba(255,255,255,0.05);
         }
         @media (max-width: 768px) {
+          .nextsteps-header { text-align: center; }
           .steps-editorial-grid {
             grid-template-columns: 1fr !important;
           }
           .step-editorial {
             padding-left: 0 !important;
             padding-right: 0 !important;
-            padding-top: 36px !important;
-            padding-bottom: 36px !important;
+            padding-top: 32px !important;
+            padding-bottom: 32px !important;
             border-left: none !important;
             border-top: 1px solid rgba(255,255,255,0.06);
           }
           .steps-editorial-grid > div:first-child .step-editorial {
             border-top: none !important;
-            padding-top: 40px !important;
+            padding-top: 36px !important;
           }
           .step-item { text-align: center; }
           .step-item > div:first-child { text-align: center; }
           .step-item > div[style*="flex"] { justify-content: center; }
-          .next-steps-section { padding-top: 60px !important; padding-bottom: 60px !important; }
+          .next-steps-section { padding-top: 52px !important; padding-bottom: 52px !important; }
         }
         @media (prefers-reduced-motion: reduce) {
           .step-editorial { transition: none !important; }

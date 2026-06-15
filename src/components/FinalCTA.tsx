@@ -132,6 +132,7 @@ export function FinalCTA() {
 
         {/* Trust pillars — reduce friction before the form */}
         <motion.div
+          className="cta-trust-pillars"
           style={{
             display: "flex",
             justifyContent: "center",
@@ -164,6 +165,7 @@ export function FinalCTA() {
           ] as { icon: React.ReactNode; text: string }[]).map((item) => (
             <div
               key={item.text}
+              className="cta-trust-pillar"
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -412,10 +414,14 @@ export function FinalCTA() {
         </motion.div>
       </div>
       <style>{`
+        @media(max-width:768px){
+          .cta-trust-pillars { gap: 20px !important; flex-direction: column; align-items: center; }
+          .cta-trust-pillar { justify-content: center; }
+        }
         @media(max-width:600px){
           .form-row { grid-template-columns: 1fr !important; }
-          #contact .glass { padding: 28px 20px !important; }
-          .cta-header { margin-bottom: 32px !important; }
+          #contact .glass { padding: 28px 16px !important; }
+          .cta-header { margin-bottom: 28px !important; }
         }
         @keyframes spin { to { transform: rotate(360deg) } }
       `}</style>

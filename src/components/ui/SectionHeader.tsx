@@ -16,7 +16,9 @@ export function SectionHeader({
 }: SectionHeaderProps) {
   const alignClass = align === "left" ? "text-left" : "text-center";
   return (
-    <div className={`${alignClass} mb-16`}>
+    <div className={`${alignClass} section-header-wrap`}
+      style={{ marginBottom: 48 }}
+    >
       <p
         style={{
           fontFamily: "var(--font-dm)",
