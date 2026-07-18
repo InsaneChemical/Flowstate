@@ -100,7 +100,7 @@ export function StatsBar() {
           >
             {/* Big number */}
             <div
-              className="gradient-text"
+              className="gradient-text stat-number"
               style={{
                 fontFamily: "var(--font-syne)",
                 fontSize: "clamp(40px, 3.8vw, 56px)",
@@ -161,6 +161,9 @@ export function StatsBar() {
           }
           .stat-editorial {
             padding: 20px 8px !important;
+          }
+          .stat-number {
+            font-size: 32px !important;
           }
           .stat-editorial-0, .stat-editorial-2 {
             border-right: 1px solid rgba(255,255,255,0.05) !important;

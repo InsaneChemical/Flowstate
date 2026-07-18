@@ -92,7 +92,7 @@ export function Navbar() {
           {/* CTA */}
           <div className="navbar-cta-row" style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <CalendlyButton
-              className="btn-primary navbar-book-btn"
+              className="btn-primary hidden-mobile"
               style={{ padding: "9px 20px", fontSize: 13 }}
             >
               Book a Call
@@ -184,8 +184,6 @@ export function Navbar() {
           .navbar-root { padding: 0 12px !important; }
           .navbar-pill { padding: 0 8px 0 14px !important; }
           .navbar-logo { width: 100px !important; height: 24px !important; }
-          .navbar-cta-row { gap: 6px !important; }
-          .navbar-book-btn { padding: 8px 14px !important; font-size: 12px !important; }
         }
         @media (min-width: 769px) {
           .show-mobile { display: none !important; }
