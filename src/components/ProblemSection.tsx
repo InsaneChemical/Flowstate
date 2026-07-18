@@ -50,7 +50,7 @@ export function ProblemSection() {
               }}
             >
               Most businesses aren&apos;t short on ideas.{" "}
-              <span style={{ color: "#64748b" }}>They&apos;re short on systems.</span>
+              <span style={{ color: "#6b7d99" }}>They&apos;re short on systems.</span>
             </h2>
 
             <div className="problem-list" style={{ display: "flex", flexDirection: "column", gap: 16 }}>
@@ -88,8 +88,7 @@ export function ProblemSection() {
         @media (max-width: 768px) {
           .problem-section > .section-inner { text-align: center; }
           .problem-heading { margin-left: auto; margin-right: auto; }
-          .problem-list { align-items: center; }
-          .problem-item { justify-content: center; }
+          .problem-list { align-items: flex-start; margin: 0 auto; max-width: fit-content; text-align: left; }
         }
       `}</style>
     </section>

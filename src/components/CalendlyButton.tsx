@@ -1,8 +1,8 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { PopupModal } from "react-calendly";
 
-const CALENDLY_URL = "https://calendly.com/escorpiao-enterprise/30min";
+const CALENDLY_URL = "https://calendly.com/nuno-flowstatemedia/15-minute-check-in";
 
 interface Props {
   className?: string;
@@ -12,11 +12,6 @@ interface Props {
 
 export function CalendlyButton({ className, style, children }: Props) {
   const [open, setOpen] = useState(false);
-  const [root, setRoot] = useState<HTMLElement | null>(null);
-
-  useEffect(() => {
-    setRoot(document.body);
-  }, []);
 
   return (
     <>
@@ -28,12 +23,12 @@ export function CalendlyButton({ className, style, children }: Props) {
         {children}
       </button>
 
-      {root && (
+      {typeof document !== "undefined" && (
         <PopupModal
           url={CALENDLY_URL}
           open={open}
           onModalClose={() => setOpen(false)}
-          rootElement={root}
+          rootElement={document.body}
         />
       )}
     </>

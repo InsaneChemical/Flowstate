@@ -54,7 +54,7 @@ export function Hero() {
           width: "100%",
           padding: "0 24px",
           display: "grid",
-          gridTemplateColumns: "1fr 1fr",
+          gridTemplateColumns: "1.15fr 1fr",
           gap: 60,
           alignItems: "center",
           position: "relative",
@@ -87,9 +87,9 @@ export function Hero() {
 
           {/* Headline */}
           <h1
+            className="hero-headline"
             style={{
               fontFamily: "var(--font-syne)",
-              fontSize: "clamp(44px, 5.5vw, 72px)",
               fontWeight: 800,
               lineHeight: 1.05,
               letterSpacing: "-0.04em",
@@ -98,7 +98,8 @@ export function Hero() {
               ...reveal(mounted, 100),
             }}
           >
-            Smarter media.{" "}
+            Smarter media.
+            <br />
             <span className="gradient-text">Smoother growth.</span>
           </h1>
 
@@ -171,6 +172,7 @@ export function Hero() {
 
       <style>{`
         .hero-section { min-height: 100svh; }
+        .hero-headline { font-size: clamp(34px, 3vw, 50px); }
         @media (max-width: 900px) {
           .hero-section { min-height: auto; }
           .hero-grid { grid-template-columns: 1fr !important; text-align: center; }
@@ -178,6 +180,7 @@ export function Hero() {
           .hero-badge-row { justify-content: center !important; }
           .hero-cta-row  { justify-content: center !important; flex-direction: column; align-items: center; }
           .hero-trust-row { margin: 0 auto !important; }
+          .hero-headline { font-size: clamp(44px, 8vw, 72px); }
         }
         @media (max-width: 600px) {
           #home { padding-top: 88px !important; padding-bottom: 52px !important; }

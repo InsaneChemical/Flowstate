@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { LegalLayout } from "@/components/LegalLayout";
 
 export const metadata: Metadata = {
@@ -160,12 +161,12 @@ const sections = [
       <p>
         If you have any questions or concerns about this Privacy Policy or how we
         handle your data, please reach out via our{" "}
-        <a
+        <Link
           href="/#contact"
           style={{ color: "#06b6d4", textDecoration: "none" }}
         >
           contact form
-        </a>{" "}
+        </Link>{" "}
         or email us directly at{" "}
         <a
           href="mailto:nuno@flowstatemedia.co.za"

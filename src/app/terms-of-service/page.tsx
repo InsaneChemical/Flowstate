@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { LegalLayout } from "@/components/LegalLayout";
 
 export const metadata: Metadata = {
@@ -193,12 +194,12 @@ const sections = [
     body: (
       <p>
         Questions about these Terms of Service? Reach us through our{" "}
-        <a
+        <Link
           href="/#contact"
           style={{ color: "#06b6d4", textDecoration: "none" }}
         >
           contact form
-        </a>{" "}
+        </Link>{" "}
         or email{" "}
         <a
           href="mailto:nuno@flowstatemedia.co.za"

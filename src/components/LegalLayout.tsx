@@ -117,7 +117,7 @@ export function LegalLayout({ badge, title, subtitle, lastUpdated, sections }: L
             style={{
               fontFamily: "var(--font-dm)",
               fontSize: 13,
-              color: "#475569",
+              color: "#6b7d99",
               letterSpacing: "0.03em",
             }}
           >

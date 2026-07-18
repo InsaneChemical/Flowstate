@@ -94,6 +94,7 @@ export function StatsBar() {
             style={{
               padding: "44px 0",
               textAlign: "center",
+              minWidth: 0,
               borderRight: i < stats.length - 1 ? "1px solid rgba(255,255,255,0.05)" : "none",
             }}
           >
@@ -138,7 +139,7 @@ export function StatsBar() {
                 style={{
                   fontFamily: "var(--font-dm)",
                   fontSize: 12,
-                  color: "#475569",
+                  color: "#6b7d99",
                   letterSpacing: "0.01em",
                 }}
               >

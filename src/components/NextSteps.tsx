@@ -89,7 +89,7 @@ export function NextSteps() {
             margin: 0,
           }}>
             Three steps.{" "}
-            <span style={{ color: "#475569" }}>Zero runaround.</span>
+            <span style={{ color: "#6b7d99" }}>Zero runaround.</span>
           </h2>
         </motion.div>
 

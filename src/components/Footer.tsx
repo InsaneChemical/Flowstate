@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 
 const services = [
   "Social Media Management",
@@ -56,7 +57,7 @@ export function Footer() {
                 fontFamily: "var(--font-dm)",
                 fontSize: 14,
                 lineHeight: 1.8,
-                color: "#64748b",
+                color: "#6b7d99",
                 maxWidth: 300,
                 marginBottom: 24,
               }}
@@ -81,7 +82,7 @@ export function Footer() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  color: "#64748b",
+                  color: "#6b7d99",
                   transition: "all 0.25s",
                 }}
                 onMouseEnter={(e) => {
@@ -90,7 +91,7 @@ export function Footer() {
                 }}
                 onMouseLeave={(e) => {
                   (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.08)";
-                  (e.currentTarget as HTMLAnchorElement).style.color = "#64748b";
+                  (e.currentTarget as HTMLAnchorElement).style.color = "#6b7d99";
                 }}
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
@@ -114,7 +115,7 @@ export function Footer() {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  color: "#64748b",
+                  color: "#6b7d99",
                   transition: "all 0.25s",
                 }}
                 onMouseEnter={(e) => {
@@ -123,7 +124,7 @@ export function Footer() {
                 }}
                 onMouseLeave={(e) => {
                   (e.currentTarget as HTMLAnchorElement).style.borderColor = "rgba(255,255,255,0.08)";
-                  (e.currentTarget as HTMLAnchorElement).style.color = "#64748b";
+                  (e.currentTarget as HTMLAnchorElement).style.color = "#6b7d99";
                 }}
               >
                 {/* X logo */}
@@ -143,7 +144,7 @@ export function Footer() {
                 fontWeight: 600,
                 letterSpacing: "0.2em",
                 textTransform: "uppercase",
-                color: "#64748b",
+                color: "#6b7d99",
                 marginBottom: 20,
               }}
             >
@@ -152,20 +153,20 @@ export function Footer() {
             <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: 12 }}>
               {services.map((s) => (
                 <li key={s}>
-                  <a
+                  <Link
                     href="/#services"
                     style={{
                       fontFamily: "var(--font-dm)",
                       fontSize: 14,
-                      color: "#64748b",
+                      color: "#6b7d99",
                       textDecoration: "none",
                       transition: "color 0.2s",
                     }}
                     onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#94a3b8")}
-                    onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#64748b")}
+                    onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#6b7d99")}
                   >
                     {s}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -180,7 +181,7 @@ export function Footer() {
                 fontWeight: 600,
                 letterSpacing: "0.2em",
                 textTransform: "uppercase",
-                color: "#64748b",
+                color: "#6b7d99",
                 marginBottom: 20,
               }}
             >
@@ -189,20 +190,20 @@ export function Footer() {
             <ul style={{ listStyle: "none", padding: 0, display: "flex", flexDirection: "column", gap: 12 }}>
               {navLinks.map((link) => (
                 <li key={link.label}>
-                  <a
+                  <Link
                     href={link.href}
                     style={{
                       fontFamily: "var(--font-dm)",
                       fontSize: 14,
-                      color: "#64748b",
+                      color: "#6b7d99",
                       textDecoration: "none",
                       transition: "color 0.2s",
                     }}
                     onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#94a3b8")}
-                    onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#64748b")}
+                    onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#6b7d99")}
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -226,7 +227,7 @@ export function Footer() {
             style={{
               fontFamily: "var(--font-dm)",
               fontSize: 12,
-              color: "#64748b",
+              color: "#6b7d99",
             }}
           >
             © {new Date().getFullYear()} Flowstate Media. All rights reserved.
@@ -236,21 +237,21 @@ export function Footer() {
               { label: "Privacy Policy", href: "/privacy-policy" },
               { label: "Terms of Service", href: "/terms-of-service" },
             ].map((item) => (
-              <a
+              <Link
                 key={item.label}
                 href={item.href}
                 style={{
                   fontFamily: "var(--font-dm)",
                   fontSize: 12,
-                  color: "#64748b",
+                  color: "#6b7d99",
                   textDecoration: "none",
                   transition: "color 0.2s",
                 }}
                 onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#94a3b8")}
-                onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#64748b")}
+                onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#6b7d99")}
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </div>
         </div>

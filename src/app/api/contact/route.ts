@@ -10,7 +10,7 @@ export async function POST(req: Request) {
   }
 
   const { error } = await resend.emails.send({
-    from: "Flowstate Contact Form <onboarding@resend.dev>",
+    from: "Flowstate Contact Form <contact@flowstatemedia.co.za>",
     to: ["nuno@flowstatemedia.co.za"],
     replyTo: email,
     subject: `New enquiry from ${name} — ${business || "no business listed"}`,

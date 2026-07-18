@@ -126,7 +126,7 @@ export function FinalCTA() {
               margin: "0 auto",
             }}
           >
-            Tell us where you are and where you want to go. We'll get back to you and take it from there.
+            Tell us where you are and where you want to go. We&apos;ll get back to you and take it from there.
           </p>
         </motion.div>
 
@@ -176,7 +176,7 @@ export function FinalCTA() {
               <span style={{
                 fontFamily: "var(--font-dm)",
                 fontSize: 13,
-                color: "#64748b",
+                color: "#6b7d99",
                 fontWeight: 500,
               }}>
                 {item.text}
@@ -398,7 +398,7 @@ export function FinalCTA() {
                 style={{
                   fontFamily: "var(--font-dm)",
                   fontSize: 13,
-                  color: "#64748b",
+                  color: "#6b7d99",
                   textAlign: "center",
                 }}
               >

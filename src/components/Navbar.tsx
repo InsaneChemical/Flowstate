@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { CalendlyButton } from "./CalendlyButton";
@@ -12,19 +12,13 @@ const links = [
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   const p = pathname === "/" ? "" : "/";
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   return (
     <>
       <nav
+        className="navbar-root"
         style={{
           position: "fixed",
           top: 16,
@@ -35,7 +29,7 @@ export function Navbar() {
         }}
       >
         <div
-          className={scrolled ? "glow-cyan" : ""}
+          className="navbar-pill"
           style={{
             maxWidth: 1060,
             margin: "0 auto",
@@ -49,12 +43,11 @@ export function Navbar() {
             border: "1px solid rgba(255,255,255,0.08)",
             backdropFilter: "blur(12px)",
             WebkitBackdropFilter: "blur(12px)",
-            transition: "all 0.3s ease",
           }}
         >
           {/* Logo */}
           <a href={`${p}#home`} style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
-            <Image src="/logo-transparent.png" alt="Flowstate Media" width={120} height={28} priority style={{ height: "28px", width: "auto" }} />
+            <Image src="/logo-transparent.png" alt="Flowstate Media" width={120} height={28} priority className="navbar-logo" style={{ height: "28px", width: "auto" }} />
           </a>
 
           {/* Desktop links */}
@@ -97,9 +90,9 @@ export function Navbar() {
           </div>
 
           {/* CTA */}
-          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <div className="navbar-cta-row" style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <CalendlyButton
-              className="btn-primary hidden-mobile"
+              className="btn-primary navbar-book-btn"
               style={{ padding: "9px 20px", fontSize: 13 }}
             >
               Book a Call
@@ -188,6 +181,11 @@ export function Navbar() {
         @media (max-width: 768px) {
           .hidden-mobile { display: none !important; }
           .show-mobile { display: flex !important; }
+          .navbar-root { padding: 0 12px !important; }
+          .navbar-pill { padding: 0 8px 0 14px !important; }
+          .navbar-logo { width: 100px !important; height: 24px !important; }
+          .navbar-cta-row { gap: 6px !important; }
+          .navbar-book-btn { padding: 8px 14px !important; font-size: 12px !important; }
         }
         @media (min-width: 769px) {
           .show-mobile { display: none !important; }

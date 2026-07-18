@@ -337,7 +337,7 @@ export function TestimonialsSection() {
                   style={{
                     fontFamily: "var(--font-dm)",
                     fontSize: 11,
-                    color: "#64748b",
+                    color: "#6b7d99",
                     marginTop: 2,
                   }}
                 >
@@ -518,14 +518,14 @@ export function TestimonialsSection() {
                             display: "inline-flex",
                             alignItems: "center",
                             justifyContent: "center",
-                            color: "#64748b",
+                            color: "#6b7d99",
                             transition: "color 0.2s",
                             flexShrink: 0,
                             padding: "16px 8px",
                             margin: "-16px -8px",
                           }}
                           onMouseEnter={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#06b6d4")}
-                          onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#64748b")}
+                          onMouseLeave={(e) => ((e.currentTarget as HTMLAnchorElement).style.color = "#6b7d99")}
                         >
                           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
@@ -539,7 +539,7 @@ export function TestimonialsSection() {
                       style={{
                         fontFamily: "var(--font-dm)",
                         fontSize: 12.5,
-                        color: "#64748b",
+                        color: "#6b7d99",
                         marginTop: 2,
                       }}
                     >
