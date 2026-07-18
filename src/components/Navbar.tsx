@@ -47,7 +47,7 @@ export function Navbar() {
         >
           {/* Logo */}
           <a href={`${p}#home`} style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
-            <Image src="/logo-transparent.png" alt="Flowstate Media" width={120} height={28} priority className="navbar-logo" style={{ height: "28px", width: "auto" }} />
+            <Image src="/logo-transparent.png" alt="Flowstate Media" width={142} height={36} priority className="navbar-logo" style={{ height: "36px", width: "auto" }} />
           </a>
 
           {/* Desktop links */}
@@ -183,7 +183,7 @@ export function Navbar() {
           .show-mobile { display: flex !important; }
           .navbar-root { padding: 0 12px !important; }
           .navbar-pill { padding: 0 8px 0 14px !important; }
-          .navbar-logo { width: 100px !important; height: 24px !important; }
+          .navbar-logo { height: 30px !important; width: auto !important; }
         }
         @media (min-width: 769px) {
           .show-mobile { display: none !important; }

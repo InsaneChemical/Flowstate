@@ -47,9 +47,9 @@ export function Footer() {
               <Image
                 src="/logo-transparent.png"
                 alt="Flowstate Media"
-                width={140}
+                width={142}
                 height={36}
-                style={{ objectFit: "contain", objectPosition: "left" }}
+                style={{ height: "36px", width: "auto", objectFit: "contain", objectPosition: "left" }}
               />
             </div>
             <p
