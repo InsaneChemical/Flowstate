@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Terms of Service — Flowstate Media",
   description:
     "The terms and conditions that govern your use of Flowstate Media's website and services.",
+  alternates: {
+    canonical: "/terms-of-service",
+  },
 };
 
 const sections = [

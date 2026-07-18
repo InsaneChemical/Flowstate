@@ -6,6 +6,9 @@ export const metadata: Metadata = {
   title: "Privacy Policy — Flowstate Media",
   description:
     "How Flowstate Media collects, uses, and protects the information you share with us.",
+  alternates: {
+    canonical: "/privacy-policy",
+  },
 };
 
 const sections = [

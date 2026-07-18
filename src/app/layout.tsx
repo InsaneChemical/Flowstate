@@ -14,10 +14,84 @@ const dmSans = DM_Sans({
   weight: ["300", "400", "500"],
 });
 
+const siteUrl = "https://flowstatemedia.co.za";
+const title = "Flowstate Media — Smarter media. Smoother growth.";
+const description =
+  "Flowstate Media helps businesses create better content, launch conversion-focused websites, and automate repetitive work with AI-powered systems.";
+
 export const metadata: Metadata = {
-  title: "Flowstate Media — Smarter media. Smoother growth.",
-  description:
-    "Flowstate Media helps businesses create better content, launch conversion-focused websites, and automate repetitive work with AI-powered systems.",
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
+  keywords: [
+    "social media management",
+    "website design",
+    "AI automation",
+    "AI voice agents",
+    "Web3 community management",
+    "digital agency South Africa",
+  ],
+  authors: [{ name: "Flowstate Media" }],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    siteName: "Flowstate Media",
+    title,
+    description,
+    locale: "en_ZA",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "Flowstate Media — Smarter media. Smoother growth.",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/opengraph-image"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+    },
+  },
+};
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Flowstate Media",
+  url: siteUrl,
+  logo: `${siteUrl}/logo-transparent.png`,
+  description,
+  email: "nuno@flowstatemedia.co.za",
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "ZA",
+  },
+  areaServed: ["ZA", "EU"],
+  sameAs: [
+    "https://www.instagram.com/flowstate.builds",
+    "https://x.com/flowstatebuilds",
+  ],
+  serviceType: [
+    "Social Media Management",
+    "Website Design",
+    "AI Automation",
+    "AI Voice Agents",
+    "Web3 Community Support",
+  ],
 };
 
 export default function RootLayout({
@@ -26,6 +100,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${syne.variable} ${dmSans.variable}`}>
       <body className="min-h-screen">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
         <a href="#main-content" className="skip-link">Skip to main content</a>
         {children}
       </body>
