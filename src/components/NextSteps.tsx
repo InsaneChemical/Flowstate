@@ -7,7 +7,7 @@ const steps = [
   {
     num: "01",
     title: "Book a free call",
-    text: "A 30-minute conversation to understand your business, goals, and biggest growth blockers.",
+    text: "A 15-minute conversation to understand your business, goals, and biggest growth blockers.",
     color: "#06b6d4",
     colorRgb: "6,182,212",
     icon: (
